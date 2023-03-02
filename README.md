@@ -1,1 +1,1 @@
-# Suvorov.LNU.Twitter-Clone
+# Suvorov.LNU.TwitterClone
