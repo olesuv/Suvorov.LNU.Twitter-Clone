@@ -1,14 +1,17 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Web", "Suvorov.LNU.TwitterClone.Web\Suvorov.LNU.TwitterClone.Web.csproj", "{4CC9A013-D8C7-4CAC-AFE2-6DB8C6DB3CEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Web", "Suvorov.LNU.TwitterClone.Web\Suvorov.LNU.TwitterClone.Web.csproj", "{4CC9A013-D8C7-4CAC-AFE2-6DB8C6DB3CEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Core", "Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj", "{4712F45D-EE90-4027-9E84-6C9B7E1FFDEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Core", "Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj", "{4712F45D-EE90-4027-9E84-6C9B7E1FFDEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Test", "Suvorov.LNU.TwitterClone.Test\Suvorov.LNU.TwitterClone.Test.csproj", "{A921AC14-52EA-4D5A-99A5-6DCF5DA25B15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Test", "Suvorov.LNU.TwitterClone.Test\Suvorov.LNU.TwitterClone.Test.csproj", "{A921AC14-52EA-4D5A-99A5-6DCF5DA25B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Models", "Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj", "{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Models", "Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj", "{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Database", "Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj", "{26C6819D-86AC-4A89-B254-3A52B63DA112}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +35,10 @@ Global
 		{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C6819D-86AC-4A89-B254-3A52B63DA112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C6819D-86AC-4A89-B254-3A52B63DA112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C6819D-86AC-4A89-B254-3A52B63DA112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C6819D-86AC-4A89-B254-3A52B63DA112}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

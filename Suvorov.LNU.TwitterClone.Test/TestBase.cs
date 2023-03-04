@@ -16,7 +16,7 @@ namespace Suvorov.LNU.TwitterClone.Test
         IConfigurationBuilder builder = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", false)
                     .AddJsonFile("appsettings.Development.json", true);
-
+=
         IConfigurationRoot configuration = builder.Build();
 
         var services = new ServiceCollection();
