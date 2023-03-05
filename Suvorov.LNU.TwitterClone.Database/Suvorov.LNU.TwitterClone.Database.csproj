@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -23,6 +23,10 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

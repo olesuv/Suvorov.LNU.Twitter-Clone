@@ -7,7 +7,7 @@ namespace Suvorov.LNU.TwitterClone.Database
     {
         public DbSet<User> User { get; set; }
 
-        public DbSet<UserPosts> UserPosts { get; set; }
+        public DbSet<Post> Post { get; set; }
 
         public NetworkDbContext() { }
 
