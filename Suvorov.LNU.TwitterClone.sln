@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Models", "Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj", "{FFD1E09D-CE7D-4528-ADA5-3CE477D7F382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.Database", "Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj", "{26C6819D-86AC-4A89-B254-3A52B63DA112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Database", "Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj", "{26C6819D-86AC-4A89-B254-3A52B63DA112}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{804CBF44-DEFF-48C2-AF95-50DBADD9D432}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

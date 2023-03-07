@@ -10,7 +10,7 @@
 
         public string Password { get; set; }
 
-        public DateTime Age { get; set; }
+        public string Age { get; set; }
 
         public DateTime RegistrationDate { get; set; }
 
