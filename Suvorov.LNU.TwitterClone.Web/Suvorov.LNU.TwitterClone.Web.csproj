@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>edb64b4f-6df7-4a6f-b6c2-a3173e7654c7</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj" />
+    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj" />
   </ItemGroup>
 

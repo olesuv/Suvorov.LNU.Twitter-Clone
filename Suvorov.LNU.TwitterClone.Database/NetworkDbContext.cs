@@ -16,7 +16,7 @@ namespace Suvorov.LNU.TwitterClone.Database
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseLazyLoadingProxies();
-            options.UseSqlServer("connection string");
+            options.UseSqlServer("ConnectionString");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

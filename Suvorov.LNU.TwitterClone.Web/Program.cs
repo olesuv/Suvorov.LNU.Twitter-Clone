@@ -1,9 +1,12 @@
 using Suvorov.LNU.TwitterClone.Core;
+using Suvorov.LNU.TwitterClone.Database;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterCoreConfiguration(builder.Configuration);
 builder.Services.RegisterCoreDependencies();
+builder.Services.RegisterDatabseDependencies(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllers();

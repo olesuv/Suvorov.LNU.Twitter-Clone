@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Suvorov.LNU.TwitterClone.Core;
+using Suvorov.LNU.TwitterClone.Database;
 
 namespace Suvorov.LNU.TwitterClone.Test
 {
@@ -13,9 +14,10 @@ namespace Suvorov.LNU.TwitterClone.Test
 
     protected TestBase()
     {
-        IConfigurationBuilder builder = new ConfigurationBuilder()
-                    .AddJsonFile("appsettings.json", false)
-                    .AddJsonFile("appsettings.Development.json", true);
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.json", false)
+                        .AddJsonFile("appsettings.Development.json", true)
+                        .AddUserSecrets<TestBase>();
 =
         IConfigurationRoot configuration = builder.Build();
 
@@ -24,6 +26,7 @@ namespace Suvorov.LNU.TwitterClone.Test
         services.AddLogging();
         services.RegisterCoreDependencies();
         services.RegisterCoreConfiguration(configuration);
+        services.RegisterDatabseDependencies(configuration);
 
         ServiceProvider = services.BuildServiceProvider();
         Logger = ServiceProvider.GetRequiredService<ILogger<TestBase>>();
