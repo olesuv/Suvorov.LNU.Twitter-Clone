@@ -1,0 +1,67 @@
+﻿@page
+@model UsersModel
+@{
+    ViewData["Title"] = "Users";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(user => user.Users[0].PhoneNumber)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(userItem => user.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.RegistrationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(userItem => user.PhoneNumber)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

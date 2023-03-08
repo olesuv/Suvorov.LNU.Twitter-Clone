@@ -26,13 +26,18 @@ namespace Suvorov.LNU.TwitterClone.Test
         {
             var users = await _userService.Create(new User()
             {
-                Name = "Test User 1",
-                UserName = "test_username_0",
-                EmailAddress = "test.user0@gmail.com",
+                Name = "Test User 2",
+                UserName = "test_username_1",
+                EmailAddress = "test.user1@gmail.com",
                 Password = "test_password",
-                Age = "8",
-                RegistrationDate = DateTime.Now.Date,
+                Age = 16,
             });
         }
-    }
+
+        [TestMethod]
+        public void GetAllUsers()
+        {
+            var usersTest = _userService.GetAll();
+        }
+     }
 }

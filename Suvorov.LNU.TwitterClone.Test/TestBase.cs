@@ -18,12 +18,12 @@ namespace Suvorov.LNU.TwitterClone.Test
                         .AddJsonFile("appsettings.json", false)
                         .AddJsonFile("appsettings.Development.json", true)
                         .AddUserSecrets<TestBase>();
-=
+
         IConfigurationRoot configuration = builder.Build();
 
         var services = new ServiceCollection();
 
-        services.AddLogging();
+        services.AddLogging((config) => config.AddDebug());
         services.RegisterCoreDependencies();
         services.RegisterCoreConfiguration(configuration);
         services.RegisterDatabseDependencies(configuration);

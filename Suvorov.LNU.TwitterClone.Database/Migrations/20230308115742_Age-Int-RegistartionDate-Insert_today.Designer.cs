@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suvorov.LNU.TwitterClone.Database;
 
@@ -11,9 +12,11 @@ using Suvorov.LNU.TwitterClone.Database;
 namespace Suvorov.LNU.TwitterClone.Database.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230308115742_Age-Int-RegistartionDate-Insert_today")]
+    partial class AgeIntRegistartionDateInsert_today
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +85,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Property<byte[]>("ProfileImage")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<DateTime?>("RegistrationDate")
+                    b.Property<DateTime>("RegistrationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("date")
                         .HasDefaultValueSql("GETDATE()");

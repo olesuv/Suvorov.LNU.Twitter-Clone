@@ -50,5 +50,14 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
         {
             return _dbContext.Set<T>();
         }
+
+        public void Dispose()
+        {
+            if (_disposed)
+                return;
+
+            _dbContext.Dispose();
+            _disposed = true;
+        }
     }
 }

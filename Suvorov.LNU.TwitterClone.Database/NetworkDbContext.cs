@@ -21,6 +21,10 @@ namespace Suvorov.LNU.TwitterClone.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+            .Property(u => u.RegistrationDate)
+            .HasColumnType("date")
+            .HasDefaultValueSql("GETDATE()"); // Use SQL Server's GETDATE() function to get the current date and time
         }
     }
 }

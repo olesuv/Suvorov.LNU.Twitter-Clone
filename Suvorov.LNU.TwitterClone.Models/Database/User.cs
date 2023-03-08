@@ -10,9 +10,9 @@
 
         public string Password { get; set; }
 
-        public string Age { get; set; }
+        public int Age { get; set; }
 
-        public DateTime RegistrationDate { get; set; }
+        public DateTime? RegistrationDate { get; set; }
 
         public string? PhoneNumber { get; set; }
 

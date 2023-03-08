@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Suvorov.LNU.TwitterClone.Database.Services;
 using Suvorov.LNU.TwitterClone.Models.Database;
+using Suvorov.LNU.TwitterClone.Database.Interfaces;
 
 namespace Suvorov.LNU.TwitterClone.Database
 {
@@ -12,7 +13,7 @@ namespace Suvorov.LNU.TwitterClone.Database
         {
             services.AddDbContext<NetworkDbContext>((x) => x.UseSqlServer(configuration.GetConnectionString("NetworkDatabase")));
 
-            services.AddScoped(typeof(DbEntityService<>), typeof(DbEntityService<>));
+            services.AddScoped(typeof(IDbEntityService<>), typeof(DbEntityService<>));
             //services.AddScoped<DbEntityService<User>, UserService>();
         }
     }
