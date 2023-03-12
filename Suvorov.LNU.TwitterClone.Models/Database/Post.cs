@@ -6,7 +6,7 @@
 
         public byte[]? ImageContent { get; set; }
 
-        public DateTime PostDate { get; set; }
+        public DateTime? PostDate { get; set; }
 
 
         public virtual User User { get; set; }

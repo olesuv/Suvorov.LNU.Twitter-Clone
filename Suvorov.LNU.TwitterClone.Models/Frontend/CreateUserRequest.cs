@@ -7,27 +7,37 @@ namespace Suvorov.LNU.TwitterClone.Models.Frontend
 {
     public class CreateUserRequest
     {
-        [Required]
+        [Required(ErrorMessage = "Who are you?")]
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Username is required.")]
         [StringLength(50)]
         public string UserName { get; set; }
 
-        [Required]
-        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Enter valid email address.")]
         public string EmailAddress { get; set; }
 
         [Required]
-        [DataType(DataType.Password)] 
+        [DataType(DataType.Date)] 
+        public DateTime Birthday { get; set;}
+
+        [Required(ErrorMessage = "Password is required.")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required]
-        public int Age { get; set; }
+        [Required(ErrorMessage = "Confirmation Password is required.")]
+        [Compare("Password", ErrorMessage = "Password and Confirmation Password must match.")]
+        public string ConfirmPassword { get; set; }
 
-        [AllowNull]
-        [DataType(DataType.PhoneNumber)]
-        public string? PhoneNumber { get; set; }
+        [Required]
+        public string SelectedMonth { get; set; }
+
+        [Required]
+        public int SelectedDay { get; set; }
+
+        [Required]
+        public int SelectedYear { get; set; }
     }
 }

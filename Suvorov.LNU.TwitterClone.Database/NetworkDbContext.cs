@@ -16,7 +16,6 @@ namespace Suvorov.LNU.TwitterClone.Database
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseLazyLoadingProxies();
-            options.UseSqlServer("ConnectionString");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,7 +23,11 @@ namespace Suvorov.LNU.TwitterClone.Database
             modelBuilder.Entity<User>()
             .Property(u => u.RegistrationDate)
             .HasColumnType("date")
-            .HasDefaultValueSql("GETDATE()"); // Use SQL Server's GETDATE() function to get the current date and time
+            .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Post>()
+            .Property(u => u.PostDate)
+            .HasDefaultValueSql("GETDATE()");
         }
     }
 }

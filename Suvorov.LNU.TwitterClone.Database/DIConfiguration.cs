@@ -11,7 +11,7 @@ namespace Suvorov.LNU.TwitterClone.Database
     {
         public static void RegisterDatabseDependencies(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            services.AddDbContext<NetworkDbContext>((x) => x.UseSqlServer(configuration.GetConnectionString("NetworkDatabase")));
+            services.AddDbContext<NetworkDbContext>((x) => x.UseSqlServer(configuration.GetConnectionString("NetworkConnection")));
 
             services.AddScoped(typeof(IDbEntityService<>), typeof(DbEntityService<>));
             //services.AddScoped<DbEntityService<User>, UserService>();

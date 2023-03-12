@@ -30,7 +30,6 @@ namespace Suvorov.LNU.TwitterClone.Test
                 UserName = "test_username_1",
                 EmailAddress = "test.user1@gmail.com",
                 Password = "test_password",
-                Age = 16,
             });
         }
 

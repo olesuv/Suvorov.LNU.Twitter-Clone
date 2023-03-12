@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Suvorov.LNU.TwitterClone.Core;
 using Suvorov.LNU.TwitterClone.Database;
 
