@@ -3,18 +3,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Suvorov.LNU.TwitterClone.Database.Interfaces;
 using Suvorov.LNU.TwitterClone.Models.Database;
 using Suvorov.LNU.TwitterClone.Models.Frontend;
+using Suvorov.LNU.TwitterClone.Database;
 using System.Globalization;
+using Suvorov.LNU.TwitterClone.Database.Services;
+using Microsoft.Extensions.Configuration.Json;
+using Microsoft.EntityFrameworkCore;
 
 namespace Suvorov.LNU.TwitterClone.Web.Pages
 {
-    public class CreateUserModel : PageModel
+    public class UserService : PageModel
     {
         [BindProperty]
         public CreateUserRequest User { get; set; }
 
-        private readonly IDbEntityService<User> _userService;
+        private readonly Database.Services.UserService _userService;
 
-        public CreateUserModel(IDbEntityService<User> userService)
+        public UserService(Database.Services.UserService userService)
         {
             _userService = userService;
         }
@@ -34,8 +38,16 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         public async Task<IActionResult> OnPost()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                OnGet();
+                return Page();
+            }
+
+            // Check if username already exists
+            if (await _userService.UserNameExists(User.UserName))
+            {
+                ModelState.AddModelError("User.UserName", "Username already exists.");
                 OnGet();
                 return Page();
             }
@@ -43,7 +55,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             int year = User.SelectedYear;
             int month = DateTime.ParseExact(User.SelectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
             int day = User.SelectedDay;
-            
+
             await _userService.Create(new User()
             {
                 Name = User.Name,

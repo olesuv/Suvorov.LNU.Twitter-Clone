@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Suvorov.LNU.TwitterClone.Database;
 using Suvorov.LNU.TwitterClone.Database.Interfaces;
+using Suvorov.LNU.TwitterClone.Database.Services;
 using Suvorov.LNU.TwitterClone.Models.Configuration;
 using Suvorov.LNU.TwitterClone.Models.Database;
 
@@ -10,14 +11,14 @@ namespace Suvorov.LNU.TwitterClone.Test
     [TestClass]
     public class UserTests : TestBase
     {
-        IDbEntityService<User> _userService;
+        UserService _userService;
         IOptions<AppConfig> _configuration;
         NetworkDbContext _dbContext;
 
         public UserTests()
         {
             _dbContext = ResolveService<NetworkDbContext>();
-            _userService = ResolveService<IDbEntityService<User>>();
+            _userService = ResolveService<UserService>();
             _configuration = ResolveService<IOptions<AppConfig>>();
         }
 
@@ -26,8 +27,8 @@ namespace Suvorov.LNU.TwitterClone.Test
         {
             var users = await _userService.Create(new User()
             {
-                Name = "Test User 2",
-                UserName = "test_username_1",
+                Name = "Test User Service",
+                UserName = "test_username_7",
                 EmailAddress = "test.user1@gmail.com",
                 Password = "test_password",
             });
