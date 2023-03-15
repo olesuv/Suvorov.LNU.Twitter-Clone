@@ -24,6 +24,8 @@ namespace Suvorov.LNU.TwitterClone.Models.Frontend
         public DateTime Birthday { get; set;}
 
         [Required(ErrorMessage = "Password is required.")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$", 
+        ErrorMessage = "Minimum eight characters, at least one uppercase letter, one lowercase letter and one number.")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

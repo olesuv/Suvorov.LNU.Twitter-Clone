@@ -22,6 +22,11 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             return await _dbContext.Set<User>().AnyAsync(x => x.UserName == userName);
         }
 
+        public async Task<bool> EmailExists(string email)
+        {
+            return await _dbContext.Set<User>().AnyAsync(x => x.EmailAddress == email);
+        }
+
         public async Task SaveChanges()
         {
             await _dbContext.SaveChangesAsync();

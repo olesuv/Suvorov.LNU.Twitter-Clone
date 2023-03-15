@@ -52,6 +52,14 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 return Page();
             }
 
+            // Check if email already exists
+            else if (await _userService.EmailExists(User.EmailAddress))
+            {
+                ModelState.AddModelError("User.EmailAddress", "Current email already in use.");
+                OnGet();
+                return Page();
+            }
+
             int year = User.SelectedYear;
             int month = DateTime.ParseExact(User.SelectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
             int day = User.SelectedDay;
