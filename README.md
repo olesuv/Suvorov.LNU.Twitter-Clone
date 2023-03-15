@@ -24,7 +24,7 @@
 	- Input validation(Check if user written correct regex of name, username, email, password and if confirm password is similar to password). 
 	<br /> Status: :white_check_mark:
 	- Input validation(Check if information already in use, like "User with current email is already signed up").
-	<br /> Status: :sparkle:
+	<br /> Status: :white_check_mark:
 	- Sign up with Google.
 <br /> Status: :negative_squared_cross_mark:
 	- Link to Login Page("Already signed up?").
