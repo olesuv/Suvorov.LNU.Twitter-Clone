@@ -9,6 +9,8 @@ builder.Services.RegisterCoreConfiguration(builder.Configuration);
 builder.Services.RegisterCoreDependencies();
 builder.Services.RegisterDatabseDependencies(builder.Configuration);
 
+builder.Services.AddApplicationInsightsTelemetry();
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
