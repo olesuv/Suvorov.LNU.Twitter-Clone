@@ -14,7 +14,7 @@
 	- Database hide connection string.
 	<br /> Status: :white_check_mark:
 	- Logs and Application Insights.
-	<br /> Status: :sparkle:
+	<br /> Status: :white_check_mark:
 	
 2. :sparkle: **Registration Page**
 	- CreateUserRequest.cs
