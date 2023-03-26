@@ -1,10 +1,13 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    font-family: Proxima Nova Rg,Helvetica,Arial,sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -17,11 +20,12 @@ body {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.navbar .navbar-brand {
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
 }
 
-body {
-  margin-bottom: 60px;
+.logo-img{
+    width: 5%;
 }
