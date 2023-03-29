@@ -80,7 +80,7 @@ dotnet run
 	- [x] Initial deploy ptoject.
 	- [x] Database hide connection string.
 	- [x] Logs and Application Insights.
-	- [ ] CI/CD.
+	- [x] CI/CD.
 	
 2. **Registration Page**
 	- [x] CreateUserRequest.cs
