@@ -95,19 +95,31 @@ dotnet run
 	- [ ] LoginUser - Razor Pages.
 	- [ ] Input validation(Check user email and password from database).
 	
-4. **Home Page & Features**
-	- [ ] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to you post.
-	- [ ] Friends recomendations.
-	- [ ] Popular hashtags.
-	- [ ] Search of users, posts.
-	- [ ] Post count of likes, ect.
-
+4. **Home Page**
+	- [ ] List of following people's posts.
+	- [ ] List of recomendation posts.
+	- [ ] List of recomendation people.
+	- [ ] List of popular hashtags.
+	- [ ] Searchbar.
+	
 5. **Profile page**
 	- [ ] List of followers.
 	- [ ] List of whom user follows and also follows current person.
 	- [ ] List of whom reads.
 	- [ ] List of posts.
 	- [ ] List of posts which user liked.
+	
+6. **Post Page**
+	- [ ] Count of likes, ect.
+	- [ ] Post text info.
+	- [ ] Post media info(mb).
+	- [ ] Hashtags.
+	
+7. **Features and algorithms**
+	- [ ] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to your post.
+	- [ ] Friends recomendations. When someone follows your friend, probably you may know this 'someone'. 
+	- [ ] Search of users, posts.
+
 
 ## :iphone: Contact me
 
