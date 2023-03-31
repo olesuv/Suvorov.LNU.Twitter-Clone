@@ -14,7 +14,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
     public class UserService : PageModel
     {
         [BindProperty]
-        public CreateUserRequest User { get; set; }
+        public new CreateUserRequest User { get; set; }
 
         private readonly Database.Services.UserService _userService;
 
@@ -73,7 +73,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 Birthday = new DateTime(year, month, day),
             });
 
-            return new RedirectToPageResult("/Users");
+            return new RedirectToPageResult("/LoginUser");
         }
     }
 }

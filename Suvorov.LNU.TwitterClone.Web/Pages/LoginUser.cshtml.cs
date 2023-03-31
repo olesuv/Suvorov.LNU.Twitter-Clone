@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Suvorov.LNU.TwitterClone.Models.Frontend;
@@ -7,7 +8,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
     public class LoginUserModel : PageModel
     {
         [BindProperty]
-        public LoginUserRequest User { get; set; }
+        public new LoginUserRequest User { get; set; }
 
         private readonly Database.Services.UserService _userService;
 
@@ -30,8 +31,8 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             // Check if email address and password mathes
             if (await _userService.EmailAndPasswordMatch(User.EmailAddress, User.Password))
             {
-                OnGet();
-                return new RedirectToPageResult("/Index");
+                HttpContext.Session.SetString("userEmailAddress", User.EmailAddress);
+                return RedirectToPage("/Index");
             }
 
             else
