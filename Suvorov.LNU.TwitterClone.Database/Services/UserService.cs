@@ -27,6 +27,18 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             return await _dbContext.Set<User>().AnyAsync(x => x.EmailAddress == email);
         }
 
+        public async Task<bool> EmailAndPasswordMatch(string email, string password)
+        {
+            var user = await _dbContext.Set<User>().FirstOrDefaultAsync(x => x.EmailAddress == email);
+            
+            if (user == null)
+            {
+                return false;
+            }
+
+            return password == user.Password;
+        }
+
         public async Task SaveChanges()
         {
             await _dbContext.SaveChangesAsync();
@@ -36,7 +48,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
         {
             var entityFromOb = await _dbContext.Set<User>().AddAsync(entity);
             await SaveChanges();
-
             return entityFromOb.Entity;
         }
 

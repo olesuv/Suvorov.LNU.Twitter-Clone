@@ -29,3 +29,37 @@ body {
 .logo-img{
     width: 5%;
 }
+
+body {
+    margin-bottom: 60px;
+}
+
+.CloneTwitterTitle {
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
+}
+
+.SubmitButton {
+    background-color: #7d0ded;
+    color: white;
+    transition-duration: 0.5s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: inline-block;
+}
+
+.SubmitButton:hover {
+    background-color: #411b67;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.CancelButton {
+    background-color: #242325;
+    color: white;
+}
+
+.BackgroundColorObjects {
+    background-color: #5f14aa;
+    color: white;
+}
