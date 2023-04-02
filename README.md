@@ -91,9 +91,10 @@ dotnet run
 	- [ ] Link to Login Page("Already signed up?").
 
 3. **Login Page**
-	- [ ] LoginUserRequest.
-	- [ ] LoginUser - Razor Pages.
-	- [ ] Input validation(Check user email and password from database).
+	- [x] LoginUserRequest.
+	- [x] LoginUser - Razor Pages.
+	- [x] Input validation(Check user email and password from database).
+	- [ ] Password hashing.
 	
 4. **Home Page**
 	- [ ] List of following people's posts.
