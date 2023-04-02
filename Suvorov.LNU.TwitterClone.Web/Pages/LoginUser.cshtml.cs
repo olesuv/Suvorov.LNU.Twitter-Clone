@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Suvorov.LNU.TwitterClone.Models.Frontend;
 
@@ -32,7 +32,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             if (await _userService.EmailAndPasswordMatch(User.EmailAddress, User.Password))
             {
                 HttpContext.Session.SetString("userEmailAddress", User.EmailAddress);
-                return RedirectToPage("/Index");
+                return RedirectToPage("/Home");
             }
 
             else

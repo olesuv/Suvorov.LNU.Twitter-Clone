@@ -62,6 +62,11 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             return await _dbContext.Set<User>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<User> GetByEmail(string email)
+        {
+            return await _dbContext.Set<User>().FirstOrDefaultAsync(x => x.EmailAddress == email);
+        }
+
         public async Task<User> Update(User entity)
         {
             var entityFromOb = _dbContext.Set<User>().Update(entity);

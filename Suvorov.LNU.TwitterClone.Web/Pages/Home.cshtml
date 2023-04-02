@@ -3,3 +3,35 @@
 @{
     ViewData["Title"] = "Home";
 }
+
+<div id="OuterContainer">
+            @inject IHttpContextAccessor HttpContextAccessor
+
+            @if (HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
+            {
+                Response.Redirect("RegisterUser");
+            }
+
+            else
+            {
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">test</div>
+
+                    <div class="col-8">
+                        <h1>Welcome, @Model.UserInfo.Name</h1>
+                        <p>Your email address is @Model.UserInfo.EmailAddress</p>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <a asp-page="Home" asp-page-handler="Logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            }
+</div>
