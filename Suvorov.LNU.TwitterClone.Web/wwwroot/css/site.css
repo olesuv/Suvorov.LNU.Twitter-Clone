@@ -1,13 +1,13 @@
 html {
-    font-size: 14px;
-    position: relative;
-    min-height: 100%;
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    font-family: Proxima Nova Rg,Helvetica,Arial,sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -16,18 +16,36 @@ body {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #411b67;
+    text-decoration: none;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .navbar .navbar-brand {
-    font-weight: 800;
-    font-style: normal;
-    letter-spacing: -1px;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -1px;
 }
 
-.logo-img{
+.logo-img {
     width: 5%;
+}
+
+.logo-img-list {
+    width: 45%;
 }
 
 body {
@@ -35,31 +53,98 @@ body {
 }
 
 .CloneTwitterTitle {
-    font-weight: 800;
-    font-style: normal;
-    letter-spacing: -1px;
+  font-weight: 800;
+  font-style: normal;
+  letter-spacing: -1px;
 }
 
 .SubmitButton {
-    background-color: #7d0ded;
-    color: white;
-    transition-duration: 0.5s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    display: inline-block;
+  background-color: #7d0ded;
+  color: white;
+  transition-duration: 0.5s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: inline-block;
 }
 
 .SubmitButton:hover {
-    background-color: #411b67;
-    color: white;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #411b67;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .CancelButton {
-    background-color: #242325;
-    color: white;
+  background-color: #242325;
+  color: white;
 }
 
 .BackgroundColorObjects {
-    background-color: #5f14aa;
+    background-color: #dfc6f8;
+}
+
+.HomeProfile {
+    bottom: 3%;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 70%;
+}
+
+.NameFont{
+    font-weight: bold;
+}
+
+.UserNameFont {
+    color: #536471;
+    font-size: x-small;
+}
+
+.HomeUserBirthday {
+    color: #536471;
+    font-size: xx-small;
+    text-align: left;
+}
+
+.HomeUserRegistrationDate {
+    color: #536471;
+    font-size: xx-small;
+    text-align: left;
+}
+
+.QuickList {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: larger;
+    text-align: left;
+}
+
+.QuickListElement {
+    padding-top: 10%;
+}
+
+.QuickListElement:hover {
+    font-weight: bold;
+    color: #411b67;
+}
+
+.PostButton {
+    background-color: #7d0ded;
     color: white;
+    transition-duration: 0.5s;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-weight: 800;
+    padding: 5%;
+}
+
+.PostButton:hover {
+    background-color: #411b67;
+    color: white;
+}
+
+.Feed {
+    border-left: 2px solid #536471;
+    border-right: 2px solid #536471;
+    height: 10px;
+    padding: .5rem;
 }

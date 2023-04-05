@@ -15,13 +15,45 @@
             else
             {
             <div class="container">
-                <div class="row">
-                    <div class="col-2">test</div>
+            <div class="row">
+                <div class="col-2" style="position: relative;">
+                    <a href="/Index"><img src="~/logo-icon.png" class="logo-img-list" /></a>
 
-                    <div class="col-8">
-                        <h1>Welcome, @Model.UserInfo.Name</h1>
-                        <p>Your email address is @Model.UserInfo.EmailAddress</p>
-                    </div>
+                    <ul class="QuickList">
+                        <li class="QuickListElement"><a href="/Home">Home</a></li>
+                        <li class="QuickListElement">Explore</li>
+                        <li class="QuickListElement">Notifications</li>
+                        <li class="QuickListElement">Messages</li>
+                        <li class="QuickListElement">Profile</li>
+                    </ul>
+
+                    <button class="btn rounded-pill PostButton">Tweet</button>
+
+
+                        <div class="HomeProfile BackgroundColorObjects">
+                            <h class="NameFont">@Model.UserInfo.Name</h>
+                            <br /> <h class="UserNameFont">@@@Model.UserInfo.UserName</h>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <br />
+                                <img src="~/icon-calendar.png" alt="Registration Date" height="15" width="15"/>
+                                <h class="HomeUserRegistrationDate">Joined @Model.UserInfo.RegistrationDate.Value.ToLongDateString()</h>
+                                </div>
+
+                                <div class="col-sm-6">
+                                <br />
+                                <img src="~/birthday-cake.png" alt="Birthday" height="15" width="15" />
+                                <h class="HomeUserBirthday">@Model.UserInfo.Birthday.ToLongDateString()</h>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="col-8 Feed" style="height: 100vh;">
+                    <h1>Welcome, @Model.UserInfo.Name</h1>
+                    <p>Your email address is @Model.UserInfo.EmailAddress</p>
+                </div>
 
                     <div class="col-2">
                         <div class="form-group row">
