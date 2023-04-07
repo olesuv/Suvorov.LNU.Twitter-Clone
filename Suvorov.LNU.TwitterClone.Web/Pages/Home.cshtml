@@ -16,7 +16,7 @@
             {
             <div class="container">
             <div class="row">
-                <div class="col-2" style="position: relative;">
+                <div class="col-md-3" style="position: relative;">
                     <a href="/Index"><img src="~/logo-icon.png" class="logo-img-list" /></a>
 
                     <ul class="QuickList">
@@ -50,12 +50,12 @@
                         </div>
                 </div>
 
-                <div class="col-8 Feed" style="height: 100vh;">
+                <div class="col-md-6 Feed" style="height: 100vh;">
                     <h1>Welcome, @Model.UserInfo.Name</h1>
                     <p>Your email address is @Model.UserInfo.EmailAddress</p>
                 </div>
 
-                    <div class="col-2">
+                    <div class="col-md-3">
                         <div class="form-group row">
                             <div class="col-12">
                                 <a asp-page="Home" asp-page-handler="Logout">Logout</a>

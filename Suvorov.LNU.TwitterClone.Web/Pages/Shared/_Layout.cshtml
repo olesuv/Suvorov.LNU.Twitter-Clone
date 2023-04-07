@@ -61,9 +61,31 @@
 
     @if (HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
     {
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2023 - Oleh Suvorov - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <footer class="footer text-muted" style="width: 100%;">
+            <div class="container-fluid no-padding">
+                <div class="row">
+                    <div class="col-md-3 UnsignedFooter"></div>
+                    <div class="col-md-6 UnsignedFooter" style="padding-top: 0.5%;">
+                        <h4 style="font-weight: 600;">Stay up to date with what's happening</h4>
+                        <h6>Twitter Clone users are the first to know.</h6>
+                    </div>
+                    <div class="col-md-3 UnsignedFooter">
+                        <div class="container-fluid no-padding" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="/LoginUser">
+                                        <input type="submit" class="btn btn-block rounded-pill FooterSignInButton form-control" asp-page-handler="Submit" value="Sign In" />
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="/RegisterUser">
+                                        <input type="submit" class="btn btn-block rounded-pill FooterSignUpButton form-control" asp-page-handler="Submit" value="Sign Up" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     }

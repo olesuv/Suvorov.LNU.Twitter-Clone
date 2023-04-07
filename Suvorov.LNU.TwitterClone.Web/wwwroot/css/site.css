@@ -5,16 +5,17 @@ html {
 }
 
 body {
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   html {
     font-size: 16px;
   }
-}
+}*/
 
 a{
     text-decoration: none;
@@ -45,11 +46,7 @@ a:hover {
 }
 
 .logo-img-list {
-    width: 45%;
-}
-
-body {
-    margin-bottom: 60px;
+    width: 20%;
 }
 
 .CloneTwitterTitle {
@@ -86,7 +83,8 @@ body {
     bottom: 3%;
     border-radius: 25px;
     padding: 20px;
-    margin-top: 70%;
+    position: absolute;
+    bottom: 3%;
 }
 
 .NameFont{
@@ -113,7 +111,7 @@ body {
 .QuickList {
     list-style-type: none;
     padding-left: 0;
-    font-size: larger;
+    font-size: large;
     text-align: left;
 }
 
@@ -147,4 +145,30 @@ body {
     border-right: 2px solid #536471;
     height: 10px;
     padding: .5rem;
+}
+
+.UnsignedFooter {
+    background-color: #5f14aa;
+    color: white;
+}
+
+.FooterSignInButton {
+    color: white;
+    transition-duration: 0.5s;
+    display: inline-block;
+    border: 1px solid white;
+}
+
+.FooterSignInButton:hover{
+    background-color: #dfc6f8;
+}
+
+.FooterSignUpButton {
+    color: black;
+    background-color: white;
+}
+
+.FooterSignUpButton:hover {
+    color: black;
+    background-color: #D7DBDC;
 }
