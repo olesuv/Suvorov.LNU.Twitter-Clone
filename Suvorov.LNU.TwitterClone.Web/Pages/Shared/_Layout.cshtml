@@ -59,7 +59,7 @@
         </main>
     </div>
 
-    @if (HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
+    @if (ViewContext.RouteData.Values["page"]?.ToString() == "/Index" && HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
     {
         <footer class="footer text-muted" style="width: 100%;">
             <div class="container-fluid no-padding">

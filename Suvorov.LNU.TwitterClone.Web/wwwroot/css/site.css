@@ -11,18 +11,20 @@ body {
     font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
 }
 
-/*@media (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   html {
     font-size: 16px;
   }
-}*/
-
-a{
-    text-decoration: none;
-    color: black;
+/*    [class*="col-"] {
+        width: 100%;
+    }*/
 }
 
-a:hover {
+a:link {
+    text-decoration: none;
+}
+
+a:link:hover {
     color: #411b67;
     text-decoration: none;
 }
