@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Suvorov.LNU.TwitterClone.Database.Interfaces;
 using Suvorov.LNU.TwitterClone.Models.Database;
 using System.Text.RegularExpressions;
+using BCrypt.Net;
 
 namespace Suvorov.LNU.TwitterClone.Database.Services
 {
@@ -36,7 +37,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
                 return false;
             }
 
-            return password == user.Password;
+            return BCrypt.Net.BCrypt.Verify(password, user.Password);
         }
 
         public async Task SaveChanges()
@@ -44,9 +45,11 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<User> Create(User entity)
+        public async Task<User> Create(User user)
         {
-            var entityFromOb = await _dbContext.Set<User>().AddAsync(entity);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+            var entityFromOb = await _dbContext.Set<User>().AddAsync(user);
             await SaveChanges();
             return entityFromOb.Entity;
         }
