@@ -20,12 +20,13 @@ body {
     }*/
 }
 
-a:link {
+a {
+    color: #7d0ded;
     text-decoration: none;
 }
 
-a:link:hover {
-    color: #411b67;
+a:hover {
+    color: #5f14aa;
     text-decoration: none;
 }
 
@@ -173,4 +174,10 @@ a:link:hover {
 .FooterSignUpButton:hover {
     color: black;
     background-color: #D7DBDC;
+}
+
+.AlreadySignedUp{
+    text-align: center;
+    position: absolute;
+    bottom: 3%;
 }
