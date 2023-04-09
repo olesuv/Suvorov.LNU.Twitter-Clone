@@ -88,7 +88,7 @@ dotnet run
 	- [x] Input validation(Check if user written correct regex of name, username, email, password and if confirm password is similar to password). 
 	- [x] Input validation(Check if information already in use, like "User with current email is already signed up").
 	- [ ] Sign up with Google.
-	- [ ] Link to Login Page("Already signed up?").
+	- [x] Link to Login Page("Already signed up?").
 
 3. **Login Page**
 	- [x] LoginUserRequest.
