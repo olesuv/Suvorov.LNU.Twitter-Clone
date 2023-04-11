@@ -15,20 +15,19 @@
             else
             {
             <div class="container">
-            <div class="row">
-                <div class="col-md-3" style="position: relative;">
-                    <a href="/Index"><img src="~/logo-icon.png" class="logo-img-list" /></a>
+                <div class="row">
+                    <div class="col-md-3 d-none d-sm-block" style="position: relative;">
+                        <a href="/Index"><img src="~/logo-icon.png" class="logo-img-list" /></a>
 
-                    <ul class="QuickList">
-                        <li class="QuickListElement"><a href="/Home">Home</a></li>
-                        <li class="QuickListElement">Explore</li>
-                        <li class="QuickListElement">Notifications</li>
-                        <li class="QuickListElement">Messages</li>
-                        <li class="QuickListElement">Profile</li>
-                    </ul>
+                        <ul class="QuickList">
+                            <li class="QuickListElement"><a href="/Home">Home</a></li>
+                            <li class="QuickListElement">Explore</li>
+                            <li class="QuickListElement">Notifications</li>
+                            <li class="QuickListElement">Messages</li>
+                            <li class="QuickListElement">Profile</li>
+                        </ul>
 
-                    <button class="btn rounded-pill PostButton">Tweet</button>
-
+                        <button class="btn rounded-pill PostButton">Tweet</button>
 
                         <div class="HomeProfile BackgroundColorObjects">
                             <h class="NameFont">@Model.UserInfo.Name</h>
@@ -46,16 +45,16 @@
                                 <img src="~/birthday-cake.png" alt="Birthday" height="15" width="15" />
                                 <h class="HomeUserBirthday">@Model.UserInfo.Birthday.ToLongDateString()</h>
                                 </div>
+                                </div>
                             </div>
-                        </div>
-                </div>
+                    </div>
 
-                <div class="col-md-6 Feed" style="height: 100vh;">
-                    <h1>Welcome, @Model.UserInfo.Name</h1>
-                    <p>Your email address is @Model.UserInfo.EmailAddress</p>
-                </div>
+                    <div class="col-md-6 col-sm-12 Feed" style="height: 100vh;">
+                        <h1>Welcome, @Model.UserInfo.Name</h1>
+                        <p>Your email address is @Model.UserInfo.EmailAddress</p>
+                    </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-3 d-none d-sm-block">
                         <div class="form-group row">
                             <div class="col-12">
                                 <a asp-page="Home" asp-page-handler="Logout">Logout</a>
@@ -63,7 +62,12 @@
                         </div>
                     </div>
 
+                    <footer class="footer-xs-only">
+                        <!-- Footer content here -->
+                        Test footer
+                    </footer>
+
                 </div>
             </div>
-            }
+         }
 </div>
