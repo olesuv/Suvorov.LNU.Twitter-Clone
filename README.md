@@ -94,7 +94,7 @@ dotnet run
 	- [x] LoginUserRequest.
 	- [x] LoginUser - Razor Pages.
 	- [x] Input validation(Check user email and password from database).
-	- [ ] Password hashing.
+	- [x] Password hashing.
 	
 4. **Home Page**
 	- [ ] List of following people's posts.
