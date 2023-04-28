@@ -9,35 +9,35 @@ using Suvorov.LNU.TwitterClone.Models.Database;
 namespace Suvorov.LNU.TwitterClone.Test
 {
     [TestClass]
-    public class UserTests : TestBase
+    public class PostTest : TestBase
     {
         UserService _userService;
+        PostService _postService;
         IOptions<AppConfig> _configuration;
         NetworkDbContext _dbContext;
 
-        public UserTests()
+        public PostTest()
         {
             _dbContext = ResolveService<NetworkDbContext>();
             _userService = ResolveService<UserService>();
+            _postService = ResolveService<PostService>();
             _configuration = ResolveService<IOptions<AppConfig>>();
         }
 
-        //[TestMethod]
-        //public async Task Create()
-        //{
-        //    var users = await _userService.Create(new User()
-        //    {
-        //        Name = "Test User Service",
-        //        UserName = "test_username_7",
-        //        EmailAddress = "test.user1@gmail.com",
-        //        Password = "test_password",
-        //    });
-        //}
+        [TestMethod]
+        public async Task Create()
+        {
+            var post = await _postService.Create(new Post()
+            {
+                TextContent = "Test post.",
+                PostDate = DateTime.Now,
+            });
+        }
 
-        //[TestMethod]
-        //public void GetAllUsers()
-        //{
-        //    var usersTest = _userService.GetAll();
-        //}
+        [TestMethod]
+        public void GetAllUsers()
+        {
+            var usersTest = _userService.GetAll();
+        }
     }
 }

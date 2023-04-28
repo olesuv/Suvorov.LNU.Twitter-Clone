@@ -6,16 +6,19 @@ using Suvorov.LNU.TwitterClone.Models.Frontend;
 
 namespace Suvorov.LNU.TwitterClone.Web.Pages
 {
-    public class HomeModel : PageModel
+    public class PostService : PageModel
     {
         [BindProperty]
-        public User UserInfo { get; private set; }
+        public User UserInfo { get; set; }
+
+        [BindProperty]
+        public new CreatePostRequest Post { get; set; }
 
         private readonly Database.Services.UserService _userService;
 
         private readonly Database.Services.PostService _postService;
 
-        public HomeModel(Database.Services.UserService userService, Database.Services.PostService postService)
+        public PostService(Database.Services.UserService userService, Database.Services.PostService postService)
         {
             _userService = userService;
             _postService = postService;
@@ -35,6 +38,28 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
         {
             HttpContext.Session.Remove("userEmailAddress");
             return RedirectToPage("Index");
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                OnGetAsync();
+                return Page();
+            }
+
+            var userEmail = HttpContext.Session.GetString("userEmailAddress");
+            var user = await _userService.GetByEmail(userEmail);
+
+            await _postService.Create(new Post()
+            {
+                TextContent = Post.TextContent,
+                ImageContent = Post.ImageContent,
+                PostDate = DateTime.Now,
+                User = user,
+            });
+
+            return new RedirectToPageResult("/Home");
         }
     }
 }

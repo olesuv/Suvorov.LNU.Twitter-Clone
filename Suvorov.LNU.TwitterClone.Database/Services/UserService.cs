@@ -31,7 +31,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
         public async Task<bool> EmailAndPasswordMatch(string email, string password)
         {
             var user = await _dbContext.Set<User>().FirstOrDefaultAsync(x => x.EmailAddress == email);
-            
+
             if (user == null)
             {
                 return false;

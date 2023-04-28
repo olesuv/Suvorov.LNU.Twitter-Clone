@@ -7,7 +7,7 @@
 <div id="OuterContainer">
             @inject IHttpContextAccessor HttpContextAccessor
 
-            @if (HttpContextAccessor.HttpContext.Session.GetString("userEmailAddress") == null)
+            @if (HttpContextAccessor?.HttpContext?.Session.GetString("userEmailAddress") == null)
             {
                 Response.Redirect("RegisterUser");
             }
@@ -27,7 +27,7 @@
                             <li class="QuickListElement">Profile</li>
                         </ul>
 
-                        <button class="btn rounded-pill PostButton">Tweet</button>
+                        <button class="btn rounded-pill PostButton" asp-page="CreatePost">Tweet</button>
 
                         <div class="HomeProfile BackgroundColorObjects">
                             <h class="NameFont">@Model.UserInfo.Name</h>
@@ -63,7 +63,6 @@
                     </div>
 
                     <footer class="footer-xs-only">
-                        <!-- Footer content here -->
                         Test footer
                     </footer>
 

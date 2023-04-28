@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Suvorov.LNU.TwitterClone.Core.Mapper;
+using Suvorov.LNU.TwitterClone.Core.Interfaces;
 using Suvorov.LNU.TwitterClone.Database;
 using Suvorov.LNU.TwitterClone.Models.Database;
 
@@ -13,7 +16,16 @@ namespace Suvorov.LNU.TwitterClone.Web
         {
             services.AddSession();
 
+            services.AddSingleton<IMapperProvider, MapperProvider>();
+            services.AddSingleton(GetMapper);
+
             services.AddMvc();
+        }
+
+        public static IMapper GetMapper(IServiceProvider serviceProvider)
+        {
+            var provider = serviceProvider.GetRequiredService<IMapperProvider>();
+            return provider.GetMapper();
         }
 
         [Obsolete]

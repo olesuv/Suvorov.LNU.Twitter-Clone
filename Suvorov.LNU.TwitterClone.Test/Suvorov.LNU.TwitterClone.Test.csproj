@@ -26,6 +26,7 @@
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj" />
+    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Script\Suvorov.LNU.TwitterClone.Script.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Web\Suvorov.LNU.TwitterClone.Web.csproj" />
   </ItemGroup>
 

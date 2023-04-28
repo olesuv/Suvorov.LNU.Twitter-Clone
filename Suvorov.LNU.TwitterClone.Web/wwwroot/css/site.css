@@ -184,3 +184,11 @@ a:hover {
     position: absolute;
     bottom: 3%;
 }
+
+.PostForm {
+    resize: none;
+}
+
+textarea {
+    resize: none;
+}
