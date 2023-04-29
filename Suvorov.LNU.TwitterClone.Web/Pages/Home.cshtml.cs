@@ -11,6 +11,9 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
         [BindProperty]
         public User UserInfo { get; private set; }
 
+        [BindProperty]
+        public Post Post { get; private set; }
+
         private readonly Database.Services.UserService _userService;
 
         private readonly Database.Services.PostService _postService;
@@ -35,6 +38,30 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
         {
             HttpContext.Session.Remove("userEmailAddress");
             return RedirectToPage("Index");
+        }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (UserInfo == null)
+            {
+                await OnGetAsync();
+            }
+
+            Post = new Post
+            {
+                TextContent = Request.Form["Post.TextContent"],
+                PostDate = DateTime.Now,
+                User = UserInfo
+            };
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            await _postService.Create(Post);
+
+            return new RedirectToPageResult("/Home");
         }
     }
 }

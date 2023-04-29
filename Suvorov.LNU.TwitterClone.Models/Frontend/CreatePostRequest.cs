@@ -11,7 +11,7 @@ namespace Suvorov.LNU.TwitterClone.Models.Frontend
     public class CreatePostRequest
     {
         [MaxLength(100)]
-        [Required(ErrorMessage = "No text content!")]
+        [Required(ErrorMessage = "Please type something.")]
         public string? TextContent { get; set; }
 
         public byte[]? ImageContent { get; set; }
