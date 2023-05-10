@@ -60,19 +60,17 @@
                             </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-12 Feed" style="height: 100vh;">
-                        <h1>Welcome, @Model.UserInfo.Name</h1>
-                        <p>Your email address is @Model.UserInfo.EmailAddress</p>
+                <div class="col-md-6 col-sm-12 Feed" style="height: 100vh; overflow: hidden;">
+                    <form method="post">
+                        // Deleting code with Welcome, ...
+                        <div class="form-group row">
+                            <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening? T"></textarea>
+                            <span asp-validation-for="Post.TextContent" class="error"></span>
+                        </div>
+                        <input type="submit" class="btn rounded-pill PostButtonInsidePost" asp-page-handler="Submit" value="Tweet" />
+                    </form>
+                </div>
 
-                        <form method="post">
-                            <div class="form-group row">
-                                <textarea asp-for="Post.TextContent" class="form-control" id="postTextContent" rows="3" cols="50" placeholder="What's happening? Try OpenAI by using ' / ' before your prompt."></textarea>
-                                <span asp-validation-for="Post.TextContent" class="error"></span>
-                            </div>
-
-                            <input type="submit" class="btn btn-block rounded-pill SubmitButton form-control" asp-page-handler="Submit" />
-                        </form>
-                    </div>
 
                     <div class="col-md-3 d-none d-sm-block">
                         <div class="form-group row">
