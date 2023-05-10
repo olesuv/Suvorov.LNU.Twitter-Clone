@@ -127,3 +127,15 @@ dotnet run
 :email: [Email](mailto:olegsuv.ukr@gmail.com)
 
 :calling: [Telegram](https://t.me/suph0mi3)
+
+ ## Lab-3
+
+**Task/s:**
+- Change `Home` page. Changed home page apperreance.
+- Change `Post button`. Redesigned post button.
+- Change 'Post area'. Made borders for post apperreance.
+
+Kozariz Volodymyr
+My project[Edelveis](https://github.com/odvova/Edelveis).
+
+[Pull request]()
