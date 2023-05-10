@@ -133,9 +133,9 @@ dotnet run
 **Task/s:**
 - Change `Home` page. Changed home page apperreance.
 - Change `Post button`. Redesigned post button.
-- Change 'Post area'. Made borders for post apperreance.
+- Change `Post area`. Made borders for post apperreance.
 
 Kozariz Volodymyr
-My project[Edelveis](https://github.com/odvova/Edelveis).
+My project [Edelveis](https://github.com/odvova/Edelveis).
 
 [Pull request]()
