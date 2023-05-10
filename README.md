@@ -138,4 +138,4 @@ dotnet run
 Kozariz Volodymyr
 My project [Edelveis](https://github.com/odvova/Edelveis).
 
-[Pull request]()
+[Pull request](https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone/pull/3)
