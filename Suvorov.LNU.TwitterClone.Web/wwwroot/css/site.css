@@ -86,11 +86,11 @@ a:hover {
 }
 
 .HomeProfile {
-  border-radius: 25px;
-  padding: 20px;
-  position: absolute;
-  bottom: 3%;
-  width: 93%;
+    border-radius: 25px;
+    padding: 20px;
+    position: absolute;
+    bottom: 3%;
+    width: 93%;
 }
 
 .NameFont {
@@ -139,6 +139,32 @@ a:hover {
   width: 100%;
   font-weight: 800;
   padding: 5%;
+}
+
+.PostButtonInsidePost {
+    background-color: #7d0ded;
+    color: white;
+    transition-duration: 0.5s;
+    display: inline-block;
+    text-align: center;
+    font-weight: 800;
+    padding: 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 5px;
+    width: 25%;
+}
+
+    .PostButtonInsidePost:hover {
+        background-color: #411b67;
+        color: white;
+    }
+
+.PostTextArea {
+    width: 97%;
+    box-sizing: border-box;
+    margin-left: 10px;
 }
 
 .PostButton:hover {
