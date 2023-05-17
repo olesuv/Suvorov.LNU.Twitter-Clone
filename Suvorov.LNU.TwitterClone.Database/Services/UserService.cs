@@ -36,7 +36,16 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
                 return false;
             }
 
-            return BCrypt.Net.BCrypt.Verify(password, user.Password);
+            string storedHashedPassword = user.Password;
+
+            return BCrypt.Net.BCrypt.Verify(password, storedHashedPassword);
+        }
+
+        public string HashPassword(string userPassword)
+        {
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(userPassword);
+
+            return hashedPassword;
         }
 
         public async Task<User> GetByEmail(string email)

@@ -1,16 +1,13 @@
-﻿using Suvorov.LNU.TwitterClone.Models.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Suvorov.LNU.TwitterClone.Models.Database;
 
 namespace Suvorov.LNU.TwitterClone.Models.Frontend
 {
     public class CreatePostRequest
     {
-        [MaxLength(100)]
+        [MaxLength(250)]
         [Required(ErrorMessage = "Please type something.")]
         public string? TextContent { get; set; }
 
@@ -18,6 +15,14 @@ namespace Suvorov.LNU.TwitterClone.Models.Frontend
 
         public DateTime? PostDate { get; set; }
 
+        public int? LikesAmount { get; set; }
+
         public virtual User? User { get; set; }
+
+        public virtual List<Like>? Likes { get; set; }
+
+        public virtual List<Comment>? Comments { get; set; }
+
+        public virtual List<PostTag>? Tags { get; set; }
     }
 }

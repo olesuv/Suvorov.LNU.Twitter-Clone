@@ -29,6 +29,37 @@ namespace Suvorov.LNU.TwitterClone.Core.Mapper
                     .ForMember(dest => dest.PhoneNumber, opt => opt.Ignore())
                     .ForMember(dest => dest.ProfileImage, opt => opt.Ignore());
 
+                cfg.CreateMap<CreatePostRequest, Post>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore()) // Ignore the Id property if it's not needed
+                    .ForMember(dest => dest.TextContent, opt => opt.MapFrom(src => src.TextContent))
+                    .ForMember(dest => dest.ImageContent, opt => opt.Ignore())
+                    .ForMember(dest => dest.PostDate, opt => opt.MapFrom(src => DateTime.Now))
+                    .ForMember(dest => dest.LikesAmount, opt => opt.MapFrom(src => 0))
+                    .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
+                    .ForMember(dest => dest.Likes, opt => opt.Ignore())
+                    .ForMember(dest => dest.Comments, opt => opt.Ignore())
+                    .ForMember(dest => dest.Tags, opt => opt.Ignore())
+                    .ConstructUsing(src => new Post
+                    {
+                        TextContent = src.TextContent,
+                        PostDate = DateTime.Now,
+                        LikesAmount = 0,
+                        User = src.User,
+                    });
+
+                cfg.CreateMap<PostTag, PostTag>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Post, opt => opt.Ignore());
+
+                cfg.CreateMap<Like, Like>()
+                    .ForMember(dest => dest.Post, opt => opt.Ignore())
+                    .ForMember(dest => dest.User, opt => opt.Ignore());
+
+                cfg.CreateMap<Comment, Comment>()
+                    .ForMember(dest => dest.CommentContent, opt => opt.MapFrom(src => src.CommentContent))
+                    .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
+                    .ForMember(dest => dest.Post, opt => opt.Ignore())
+                    .ForMember(dest => dest.User, opt => opt.Ignore());
             });
 
             config.AssertConfigurationIsValid();

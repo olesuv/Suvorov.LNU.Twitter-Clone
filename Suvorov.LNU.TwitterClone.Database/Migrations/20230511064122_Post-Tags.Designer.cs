@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suvorov.LNU.TwitterClone.Database;
 
@@ -11,9 +12,11 @@ using Suvorov.LNU.TwitterClone.Database;
 namespace Suvorov.LNU.TwitterClone.Database.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230511064122_Post-Tags")]
+    partial class PostTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,56 +28,19 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Comment", b =>
+            modelBuilder.Entity("PostPostTag", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("PostsId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CommentContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("PostId")
+                    b.Property<int>("TagsId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
+                    b.HasKey("PostsId", "TagsId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("TagsId");
 
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Like", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Like");
+                    b.ToTable("PostPostTag");
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Post", b =>
@@ -88,7 +54,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Property<byte[]>("ImageContent")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int?>("LikesAmount")
+                    b.Property<int?>("Likes")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("PostDate")
@@ -120,12 +86,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("PostTag");
                 });
@@ -173,66 +134,28 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Comment", b =>
+            modelBuilder.Entity("PostPostTag", b =>
                 {
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId");
-
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.User", "User")
+                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Post", null)
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("PostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Post");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Like", b =>
-                {
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Post", "Post")
-                        .WithMany("Likes")
-                        .HasForeignKey("PostId");
-
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.User", "User")
+                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.PostTag", null)
                         .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Post");
-
-                    b.Navigation("User");
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Post", b =>
                 {
                     b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.User", "User")
-                        .WithMany("Posts")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.PostTag", b =>
-                {
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Post", "Post")
-                        .WithMany("Tags")
-                        .HasForeignKey("PostId");
-
-                    b.Navigation("Post");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Post", b =>
-                {
-                    b.Navigation("Comments");
-
-                    b.Navigation("Likes");
-
-                    b.Navigation("Tags");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.User", b =>
-                {
-                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

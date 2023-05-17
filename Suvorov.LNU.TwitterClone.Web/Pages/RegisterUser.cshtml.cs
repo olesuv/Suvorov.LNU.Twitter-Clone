@@ -64,12 +64,14 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             int month = DateTime.ParseExact(User.SelectedMonth, "MMMM", CultureInfo.CurrentCulture).Month;
             int day = User.SelectedDay;
 
+            string userHashedPassword = _userService.HashPassword(User.Password);
+
             await _userService.Create(new User()
             {
                 Name = User.Name,
                 UserName = User.UserName,
                 EmailAddress = User.EmailAddress,
-                Password = User.Password,
+                Password = userHashedPassword,
                 Birthday = new DateTime(year, month, day),
             });
 

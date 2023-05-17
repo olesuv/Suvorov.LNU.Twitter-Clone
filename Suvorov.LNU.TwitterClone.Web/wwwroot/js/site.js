@@ -1,7 +1,4 @@
-﻿//$('.PostForm').on('input', function () {
-//    const userInput = $(this).val();
-
-//    if (userInput.startsWith("/")) {
-//        $(this).addClass('grey-background');
-//    }
-//});
+﻿function scrollToPost() {
+  var postContent = document.getElementById("postTextContent");
+  postContent.scrollIntoView({ behavior: "smooth", block: "start" });
+}

@@ -5,16 +5,16 @@ html {
 }
 
 body {
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Proxima Nova Rg, Helvetica, Arial, sans-serif;
 }
 
 @media (min-width: 576px) {
-    .footer-xs-only {
-        display: none;
-    }
+  .footer-xs-only {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -24,13 +24,13 @@ body {
 }
 
 a {
-    color: #7d0ded;
-    text-decoration: none;
+  color: #7d0ded;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #5f14aa;
-    text-decoration: none;
+  color: #5f14aa;
+  text-decoration: none;
 }
 
 .btn:focus,
@@ -48,11 +48,11 @@ a:hover {
 }
 
 .logo-img {
-    width: 5%;
+  width: 5%;
 }
 
 .logo-img-list {
-    width: 20%;
+  width: 20%;
 }
 
 .CloneTwitterTitle {
@@ -82,113 +82,163 @@ a:hover {
 }
 
 .BackgroundColorObjects {
-    background-color: #dfc6f8;
+  background-color: #dfc6f8;
 }
 
 .HomeProfile {
-    bottom: 3%;
-    border-radius: 25px;
-    padding: 20px;
-    position: absolute;
-    bottom: 3%;
+  border-radius: 25px;
+  padding: 20px;
+  position: absolute;
+  bottom: 3%;
+  width: 93%;
 }
 
-.NameFont{
-    font-weight: bold;
+.NameFont {
+  font-weight: bold;
 }
 
 .UserNameFont {
-    color: #536471;
-    font-size: x-small;
+  color: #536471;
+  font-size: x-small;
 }
 
 .HomeUserBirthday {
-    color: #536471;
-    font-size: xx-small;
-    text-align: left;
+  color: #536471;
+  font-size: xx-small;
+  text-align: left;
 }
 
 .HomeUserRegistrationDate {
-    color: #536471;
-    font-size: xx-small;
-    text-align: left;
+  color: #536471;
+  font-size: xx-small;
+  text-align: left;
 }
 
 .QuickList {
-    list-style-type: none;
-    padding-left: 0;
-    font-size: large;
-    text-align: left;
+  list-style-type: none;
+  padding-left: 0;
+  font-size: large;
+  text-align: left;
 }
 
 .QuickListElement {
-    padding-top: 10%;
+  padding-top: 10%;
 }
 
 .QuickListElement:hover {
-    font-weight: bold;
-    color: #411b67;
+  font-weight: bold;
+  color: #411b67;
 }
 
 .PostButton {
-    background-color: #7d0ded;
-    color: white;
-    transition-duration: 0.5s;
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    font-weight: 800;
-    padding: 5%;
+  background-color: #7d0ded;
+  color: white;
+  transition-duration: 0.5s;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  font-weight: 800;
+  padding: 5%;
 }
 
 .PostButton:hover {
-    background-color: #411b67;
-    color: white;
+  background-color: #411b67;
+  color: white;
 }
 
 .Feed {
-    border-left: 2px solid #536471;
-    border-right: 2px solid #536471;
-    height: 10px;
-    padding: .5rem;
+  border-left: 1px solid #536471;
+  border-right: 1px solid #536471;
+  height: 10px;
+  padding: 0.5rem;
 }
 
 .UnsignedFooter {
-    background-color: #5f14aa;
-    color: white;
+  background-color: #5f14aa;
+  color: white;
 }
 
 .FooterSignInButton {
-    color: white;
-    transition-duration: 0.5s;
-    display: inline-block;
-    border: 1px solid white;
+  color: white;
+  transition-duration: 0.5s;
+  display: inline-block;
+  border: 1px solid white;
 }
 
-.FooterSignInButton:hover{
-    background-color: #dfc6f8;
+.FooterSignInButton:hover {
+  background-color: #dfc6f8;
 }
 
 .FooterSignUpButton {
-    color: black;
-    background-color: white;
+  color: black;
+  background-color: white;
 }
 
 .FooterSignUpButton:hover {
-    color: black;
-    background-color: #D7DBDC;
+  color: black;
+  background-color: #d7dbdc;
 }
 
-.AlreadySignedUp{
-    text-align: center;
-    position: absolute;
-    bottom: 3%;
+.AlreadySignedUp {
+  text-align: center;
+  position: absolute;
+  bottom: 3%;
 }
 
 .PostForm {
-    resize: none;
+  resize: none;
 }
 
 textarea {
-    resize: none;
+  resize: none;
+}
+
+.PostButtonInsidePost {
+  background-color: #7d0ded;
+  color: white;
+  transition-duration: 0.5s;
+  display: inline-block;
+  text-align: center;
+  font-weight: 800;
+  padding: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 5px;
+  width: 25%;
+  margin-bottom: 5px;
+}
+
+.PostButtonInsidePost:hover {
+  background-color: #411b67;
+  color: white;
+}
+
+.PostTextArea {
+  width: 97%;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+}
+
+.form-group {
+  margin-top: 20px;
+}
+
+.Post {
+  margin-top: 2%;
+  padding: 5px;
+}
+
+.PostUsername {
+  font-family: "JetBrains Mono";
+  font-size: small;
+}
+
+.PostUserName {
+  font-weight: bold;
 }

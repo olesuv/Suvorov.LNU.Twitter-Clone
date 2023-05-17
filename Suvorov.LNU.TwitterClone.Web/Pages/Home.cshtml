@@ -38,7 +38,7 @@
                             <li class="QuickListElement">Profile</li>
                         </ul>
 
-                        <button class="btn rounded-pill PostButton" asp-page="CreatePost">Tweet</button>
+                        <button class="btn rounded-pill PostButton" asp-page="CreatePost" onclick="scrollToPost()">Tweet</button>
 
                         <div class="HomeProfile BackgroundColorObjects">
                             <h class="NameFont">@Model.UserInfo.Name</h>
@@ -61,17 +61,18 @@
                     </div>
 
                     <div class="col-md-6 col-sm-12 Feed" style="height: 100vh;">
-                        <h1>Welcome, @Model.UserInfo.Name</h1>
-                        <p>Your email address is @Model.UserInfo.EmailAddress</p>
-
                         <form method="post">
                             <div class="form-group row">
-                                <textarea asp-for="Post.TextContent" class="form-control" id="postTextContent" rows="3" cols="50" placeholder="What's happening? Try OpenAI by using ' / ' before your prompt."></textarea>
+                                <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening?"></textarea>
                                 <span asp-validation-for="Post.TextContent" class="error"></span>
                             </div>
 
-                            <input type="submit" class="btn btn-block rounded-pill SubmitButton form-control" asp-page-handler="Submit" />
+                            <input type="submit" class="btn rounded-pill PostButtonInsidePost" asp-page-handler="Submit" value="Tweet"/>
                         </form>
+
+                        <div class="feed">
+                            @Html.Partial("_HomePostsPartial", Model)
+                        </div>
                     </div>
 
                     <div class="col-md-3 d-none d-sm-block">

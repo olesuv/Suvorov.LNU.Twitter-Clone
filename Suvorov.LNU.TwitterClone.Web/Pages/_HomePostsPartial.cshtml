@@ -1,0 +1,22 @@
+@model Suvorov.LNU.TwitterClone.Web.Pages.HomeModel
+
+@foreach (var post in Model.Posts)
+{
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img src="https://via.placeholder.com/150" alt="User avatar" class="img-fluid rounded-circle">
+                </div>
+                <div class="col-sm-10">
+                    <h class="card-title">
+                        <h class="PostUserName">@Html.DisplayFor(postItem => post.User.Name)</h> 
+                        <h class="PostUsername">@@@Html.DisplayFor(postItem => post.User.UserName)</h>
+                    </h>
+                    <h class="text-muted">@Html.DisplayFor(postItem => post.PostDate)</h>
+                    <p class="card-text">@Html.DisplayFor(postItem => post.TextContent)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

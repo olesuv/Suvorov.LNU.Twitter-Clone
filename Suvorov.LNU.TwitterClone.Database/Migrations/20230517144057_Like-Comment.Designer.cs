@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suvorov.LNU.TwitterClone.Database;
 
@@ -11,9 +12,11 @@ using Suvorov.LNU.TwitterClone.Database;
 namespace Suvorov.LNU.TwitterClone.Database.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230517144057_Like-Comment")]
+    partial class LikeComment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,12 +102,7 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Property<string>("TextContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Post");
                 });
@@ -203,15 +201,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Post", b =>
-                {
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.User", "User")
-                        .WithMany("Posts")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.PostTag", b =>
                 {
                     b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Post", "Post")
@@ -228,11 +217,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Navigation("Likes");
 
                     b.Navigation("Tags");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.User", b =>
-                {
-                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }

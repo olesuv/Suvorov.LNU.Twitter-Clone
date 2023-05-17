@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Suvorov.LNU.TwitterClone.Models.Database;
 using Suvorov.LNU.TwitterClone.Models.Frontend;
 
 namespace Suvorov.LNU.TwitterClone.Web.Pages
@@ -28,13 +28,12 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 return Page();
             }
 
-            // Check if email address and password mathes
-            if (await _userService.EmailAndPasswordMatch(User.EmailAddress, User.Password))
+            // Check if email address and password match
+            if (await _userService.EmailAndPasswordMatch(User?.EmailAddress, User?.Password))
             {
                 HttpContext.Session.SetString("userEmailAddress", User.EmailAddress);
                 return RedirectToPage("/Home");
             }
-
             else
             {
                 ModelState.AddModelError(string.Empty, "Invalid email address or password.");

@@ -20,6 +20,8 @@ namespace Suvorov.LNU.TwitterClone.Web
             services.AddSingleton(GetMapper);
 
             services.AddMvc();
+
+            services.AddControllers();
         }
 
         public static IMapper GetMapper(IServiceProvider serviceProvider)
