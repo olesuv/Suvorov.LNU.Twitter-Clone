@@ -9,7 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Test", "Suvorov.LNU.TwitterClone.Test\Suvorov.LNU.TwitterClone.Test.csproj", "{A921AC14-52EA-4D5A-99A5-6DCF5DA25B15}"
 	ProjectSection(ProjectDependencies) = postProject
-		{8121AD96-3942-4AA6-A8B8-5A8540869F19} = {8121AD96-3942-4AA6-A8B8-5A8540869F19}
 		{F9AFCD07-C164-4642-A08B-A05F488624EF} = {F9AFCD07-C164-4642-A08B-A05F488624EF}
 	EndProjectSection
 EndProject
@@ -25,11 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.Algorithms", "Suvorov.LNU.TwitterClone.Algorithms\Suvorov.LNU.TwitterClone.Algorithms.csproj", "{F9AFCD07-C164-4642-A08B-A05F488624EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Suvorov.LNU.TwitterClone.OpenAI", "Suvorov.LNU.TwitterClone.OpenAI\Suvorov.LNU.TwitterClone.OpenAI.csproj", "{8121AD96-3942-4AA6-A8B8-5A8540869F19}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4712F45D-EE90-4027-9E84-6C9B7E1FFDEF} = {4712F45D-EE90-4027-9E84-6C9B7E1FFDEF}
-		{4CC9A013-D8C7-4CAC-AFE2-6DB8C6DB3CEA} = {4CC9A013-D8C7-4CAC-AFE2-6DB8C6DB3CEA}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suvorov.LNU.TwitterClone.OpenAI", "Suvorov.LNU.TwitterClone.OpenAI\Suvorov.LNU.TwitterClone.OpenAI.csproj", "{03D651BA-1E9C-4CDE-879F-F79638E6E925}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +56,10 @@ Global
 		{F9AFCD07-C164-4642-A08B-A05F488624EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9AFCD07-C164-4642-A08B-A05F488624EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9AFCD07-C164-4642-A08B-A05F488624EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8121AD96-3942-4AA6-A8B8-5A8540869F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8121AD96-3942-4AA6-A8B8-5A8540869F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8121AD96-3942-4AA6-A8B8-5A8540869F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8121AD96-3942-4AA6-A8B8-5A8540869F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03D651BA-1E9C-4CDE-879F-F79638E6E925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03D651BA-1E9C-4CDE-879F-F79638E6E925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03D651BA-1E9C-4CDE-879F-F79638E6E925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03D651BA-1E9C-4CDE-879F-F79638E6E925}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
