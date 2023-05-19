@@ -1,7 +1,7 @@
 ﻿namespace Suvorov.LNU.TwitterClone.Models.Configuration
 {
     public class AppConfig
-{
-    public int ForecastAmount { get; set; }
-}
+    {
+        public required string OpenAI_API_KEY { get; set; }
+    }
 }

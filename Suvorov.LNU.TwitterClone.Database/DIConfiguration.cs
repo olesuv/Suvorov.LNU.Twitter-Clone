@@ -16,6 +16,7 @@ namespace Suvorov.LNU.TwitterClone.Database
             services.AddScoped(typeof(IDbEntityService<>), typeof(DbEntityService<>));
             services.AddScoped<UserService, UserService>();
             services.AddScoped<PostService, PostService>();
+            services.AddScoped<PostTagService, PostTagService>();
         }
     }
 }

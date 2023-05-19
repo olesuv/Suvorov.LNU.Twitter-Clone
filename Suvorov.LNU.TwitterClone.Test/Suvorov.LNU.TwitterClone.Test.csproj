@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.0.2" />
     <PackageReference Include="MSTest.TestFramework" Version="3.0.2" />
     <PackageReference Include="coverlet.collector" Version="3.2.0">
@@ -26,7 +27,7 @@
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Database\Suvorov.LNU.TwitterClone.Database.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Models\Suvorov.LNU.TwitterClone.Models.csproj" />
-    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Script\Suvorov.LNU.TwitterClone.Script.csproj" />
+    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.OpenAI\Suvorov.LNU.TwitterClone.OpenAI.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Web\Suvorov.LNU.TwitterClone.Web.csproj" />
   </ItemGroup>
 

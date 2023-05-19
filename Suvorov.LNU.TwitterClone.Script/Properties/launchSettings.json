@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Suvorov.LNU.TwitterClone.Script": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55019;http://localhost:55020"
+    }
+  }
+}

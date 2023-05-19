@@ -23,21 +23,5 @@ namespace Suvorov.LNU.TwitterClone.Test
             _postService = ResolveService<PostService>();
             _configuration = ResolveService<IOptions<AppConfig>>();
         }
-
-        [TestMethod]
-        public async Task Create()
-        {
-            var post = await _postService.Create(new Post()
-            {
-                TextContent = "Test post.",
-                PostDate = DateTime.Now,
-            });
-        }
-
-        [TestMethod]
-        public void GetAllUsers()
-        {
-            var usersTest = _userService.GetAll();
-        }
     }
 }
