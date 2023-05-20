@@ -14,6 +14,7 @@ namespace Suvorov.LNU.TwitterClone.Algorithms
 
         public async Task<List<Post>> GeneratePostRecomendations()
         {
+            // Should be modifiyed when will add `Likes` to `Post`.
             var sortedPosts = await _postService.SortByPostDate();
             return sortedPosts;
         }

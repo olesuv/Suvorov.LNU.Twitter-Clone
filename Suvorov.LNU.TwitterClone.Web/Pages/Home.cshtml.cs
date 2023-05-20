@@ -7,6 +7,7 @@ using Suvorov.LNU.TwitterClone.Models.Configuration;
 using Suvorov.LNU.TwitterClone.Models.Database;
 using Suvorov.LNU.TwitterClone.Models.Frontend;
 using Suvorov.LNU.TwitterClone.OpenAI;
+using System.Text.RegularExpressions;
 
 namespace Suvorov.LNU.TwitterClone.Web.Pages
 {
@@ -71,13 +72,28 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             var userEmail = HttpContext.Session.GetString("userEmailAddress");
             var user = await _userService.GetByEmail(userEmail);
 
-            await _postService.Create(new Post()
+            var newPost = new Post()
             {
                 TextContent = Post.TextContent,
                 PostDate = DateTime.Now,
                 LikesAmount = 0,
                 User = user
-            });
+            };
+
+            await _postService.Create(newPost);
+
+            List<string> tags = await DetectTagsInPost.ExtractTagsFromPost(Post.TextContent);
+
+            foreach (var tag in tags)
+            {
+                var newPostTag = new PostTag()
+                {
+                    Name = tag,
+                    Post = newPost
+                };
+
+                await _postTagService.Create(newPostTag);
+            }
 
             return new RedirectToPageResult("/Home");
         }
@@ -106,9 +122,18 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
             await _postService.Create(newPost);
 
+
+            var newPostAITag = new PostTag()
+            {
+                Name = "generatedWithAI",
+                Post = newPost
+            };
+
+            await _postTagService.Create(newPostAITag);
+
             List<string> generatedHashtags = await tweetsGenerator.GenerateTweetHashtags(newPost.TextContent);
 
-            foreach(var hashtag in generatedHashtags)
+            foreach (var hashtag in generatedHashtags)
             {
                 var newPostTag = new PostTag()
                 {
