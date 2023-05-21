@@ -51,6 +51,7 @@ jobs:
         run: |
           echo "API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
           jq --arg OpenAI_API_KEY $API_KEY '.AppConfig.OpenAI_API_KEY = $OpenAI_API_KEY' appsettings.json > appsettings.tmp.json
+          rm appsettings.json
           mv appsettings.tmp.json appsettings.json
 
       - name: Deploy to Azure Web App
