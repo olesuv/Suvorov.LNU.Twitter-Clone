@@ -46,6 +46,12 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: .net-app
+          
+      - name: Update appsettings.json with OpenAI API key
+        run: |
+          echo "::set-env name=API_KEY::${{ secrets.OPENAI_API_KEY }}"
+          jq --arg OpenAI_API_KEY $API_KEY '.AppConfig.OpenAI_API_KEY = $OpenAI_API_KEY' appsettings.json > appsettings.tmp.json
+          mv appsettings.tmp.json appsettings.json
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
