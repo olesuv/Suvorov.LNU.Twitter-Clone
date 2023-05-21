@@ -98,7 +98,7 @@ dotnet run
 	
 4. **Home Page**
 	- [ ] List of following people's posts.
-	- [ ] List of recomendation posts.
+	- [x] List of recomendation posts.
 	- [ ] List of recomendation people.
 	- [ ] List of popular hashtags.
 	- [ ] Searchbar.
@@ -112,14 +112,18 @@ dotnet run
 	
 6. **Post Page**
 	- [ ] Count of likes, ect.
-	- [ ] Post text info.
+	- [x] Post text info.
 	- [ ] Post media info(mb).
-	- [ ] Hashtags.
+	- [x] Hashtags.
 	
 7. **Features and algorithms**
 	- [ ] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to your post.
 	- [ ] Friends recomendations. When someone follows your friend, probably you may know this 'someone'. 
 	- [ ] Search of users, posts.
+
+8. **Integration with OpenAI**
+	- [x] Post generation.
+	- [x] Hashtags generation.
 
 
 ## :iphone: Contact me
