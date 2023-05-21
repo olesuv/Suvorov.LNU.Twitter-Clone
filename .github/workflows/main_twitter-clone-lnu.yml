@@ -46,13 +46,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: .net-app
-          
-      - name: Update appsettings.json with OpenAI API key
-        run: |
-          echo "API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
-          jq --arg OpenAI_API_KEY $API_KEY '.AppConfig.OpenAI_API_KEY = $OpenAI_API_KEY' Suvorov.LNU.TwitterClone.Web/appsettings.json > Suvorov.LNU.TwitterClone.Web/appsettings.tmp.json
-          rm Suvorov.LNU.TwitterClone.Web/appsettings.json
-          mv Suvorov.LNU.TwitterClone.Web/appsettings.tmp.json Suvorov.LNU.TwitterClone.Web/appsettings.json
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
