@@ -149,4 +149,4 @@ My project [Edelveis](https://github.com/odvova/Edelveis).
 # Lab 4
 - Reviewer: Voievoda Vladislav 
 - My project [project](https://github.com/Vladislav43/WEB)
-- [Pull request](https://github.com/Vladislav43/Edelveis/pull/1) with fixing.
+- [Pull request]([https://github.com/Vladislav43/Edelveis/pull/1](https://github.com/Vladislav43/Suvorov.LNU.Twitter-Clone/pull/1#pullrequestreview-1442808620)) with fixing.
