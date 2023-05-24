@@ -1,0 +1,108 @@
+﻿@page
+@model Suvorov.LNU.TwitterClone.Web.Pages.HomeModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<style type="text/css">
+    .error {
+        color: red;
+        font-size: 10px;
+    }
+
+    .form-group {
+        margin-top: 20px;
+    }
+</style>
+
+<div id="OuterContainer">
+            @inject IHttpContextAccessor HttpContextAccessor
+
+            @if (HttpContextAccessor?.HttpContext?.Session.GetString("userEmailAddress") == null)
+            {
+                Response.Redirect("RegisterUser");
+            }
+
+            else
+            {
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 d-none d-sm-block" style="position: relative;">
+                        <a href="/Index"><img src="~/logo-icon.png" class="logo-img-list" /></a>
+
+                        <ul class="QuickList">
+                            <li class="QuickListElement"><a href="/Home">Home</a></li>
+                            <li class="QuickListElement">Explore</li>
+                            <li class="QuickListElement">Notifications</li>
+                            <li class="QuickListElement">Messages</li>
+                            <li class="QuickListElement">Profile</li>
+                        </ul>
+
+                        <button class="btn rounded-pill PostButton" asp-page="CreatePost" onclick="scrollToPost()">Tweet</button>
+
+                        <div class="HomeProfile BackgroundColorObjects">
+                            <h class="NameFont">@Model.UserInfo.Name</h>
+                            <br /> <h class="UserNameFont">@@@Model.UserInfo.UserName</h>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                <br />
+                                <img src="~/icon-calendar.png" alt="Registration Date" height="15" width="15"/>
+                                <h class="HomeUserRegistrationDate">Joined @Model.UserInfo.RegistrationDate.Value.ToLongDateString()</h>
+                                </div>
+
+                                <div class="col-sm-6">
+                                <br />
+                                <img src="~/birthday-cake.png" alt="Birthday" height="15" width="15" />
+                                <h class="HomeUserBirthday">@Model.UserInfo.Birthday.ToLongDateString()</h>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 Feed" style="height: 100vh;">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <form method="post" asp-page-handler="UserTweet">
+                                    <div class="form-group row">
+                                        <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening?"></textarea>
+                                        <span asp-validation-for="Post.TextContent" class="error"></span>
+                                    </div>
+
+                                    <input type="submit" class="btn rounded-pill PostButtonInsidePost" value="Tweet" />
+                                </form>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <form method="post" asp-page-handler="UserTweetUisngOpenAI">
+                                    <div class="form-group row">
+                                        <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening? Try AI, just write tweet idea"></textarea>
+                                        <span asp-validation-for="Post.TextContent" class="error"></span>
+                                    </div>
+
+                                    <input type="submit" class="btn rounded-pill PostButtonInsidePost" value="Tweet with AI &#x2728;" />
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="feed">
+                            @await Html.PartialAsync("_HomePostsPartial", Model)
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 d-none d-sm-block">
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <a asp-page="Home" asp-page-handler="Logout">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="footer-xs-only">
+                        Test footer
+                    </footer>
+
+                </div>
+            </div>
+         }
+</div>
