@@ -138,8 +138,15 @@ dotnet run
 - Change `Home` page. Changed home page apperreance.
 - Change `Post button`. Redesigned post button.
 - Change `Post area`. Made borders for post apperreance.
-
+# Lab 4
 Kozariz Volodymyr
 My project [Edelveis](https://github.com/odvova/Edelveis).
 
 [Pull request](https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone/pull/3)
+
+
+
+# Lab 4
+- Reviewer: Voievoda Vladislav 
+- My project [project](https://github.com/Vladislav43/WEB)
+- [Pull request](https://github.com/Vladislav43/Edelveis/pull/1) with fixing.
