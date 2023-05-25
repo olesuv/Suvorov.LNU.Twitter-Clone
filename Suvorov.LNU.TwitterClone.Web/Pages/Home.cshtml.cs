@@ -22,6 +22,8 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         public PostTag PostTag { get; set; }
 
+        public List<(string Name, int Count)> mostUsedTags { get; set; }
+
         private readonly string OpenAI_API_KEY;
 
         private readonly IOptions<AppConfig> _configuration;
@@ -32,11 +34,14 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         private readonly PostTagService _postTagService;
 
-        public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, IOptions<AppConfig> configuration)
+        private readonly PostTagCountService _postTagCountService;
+
+        public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, PostTagCountService postTagCountService, IOptions<AppConfig> configuration)
         {
             _userService = userService;
             _postService = postService;
             _postTagService = postTagService;
+            _postTagCountService = postTagCountService;
             _configuration = configuration;
 
             OpenAI_API_KEY = _configuration.Value.OpenAI_API_KEY;
@@ -53,6 +58,8 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
             var postRecomendations = new PostRecomendations(_postService);
             Posts = await postRecomendations.GeneratePostRecomendations();
+
+            mostUsedTags = await _postTagCountService.GetMostUsedTags(10);
         }
 
         public IActionResult OnGetLogout()
@@ -93,6 +100,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 };
 
                 await _postTagService.Create(newPostTag);
+                await _postTagCountService.IncrementTagCount(newPostTag);
             }
 
             return new RedirectToPageResult("/Home");
@@ -142,6 +150,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 };
 
                 await _postTagService.Create(newPostTag);
+                await _postTagCountService.IncrementTagCount(newPostTag);
             }
 
             return new RedirectToPageResult("/Home");

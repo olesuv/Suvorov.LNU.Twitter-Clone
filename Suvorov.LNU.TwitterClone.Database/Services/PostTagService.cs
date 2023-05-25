@@ -14,5 +14,18 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
         {
             _dbContext = dbContext;
         }
+
+        public async Task<List<PostTag>> GetMostUsedHashtags(int count)
+        {
+            var hashtagCounts = await _dbContext.PostTag
+                .Where(pt => pt.Name != null)
+                .GroupBy(pt => pt.Name)
+                .OrderByDescending(group => group.Count())
+                .Select(group => new PostTag { Id = 0, Name = group.Key }) // Assuming Id property exists
+                .Take(count)
+                .ToListAsync();
+
+            return hashtagCounts;
+        }
     }
 }

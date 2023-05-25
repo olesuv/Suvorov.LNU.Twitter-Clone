@@ -36,6 +36,7 @@
                             <li class="QuickListElement">Notifications</li>
                             <li class="QuickListElement">Messages</li>
                             <li class="QuickListElement">Profile</li>
+                            <li class="QuickListElement"><a asp-page="Home" asp-page-handler="Logout">Logout</a></li>
                         </ul>
 
                         <button class="btn rounded-pill PostButton" asp-page="CreatePost" onclick="scrollToPost()">Tweet</button>
@@ -93,7 +94,7 @@
                     <div class="col-md-3 d-none d-sm-block">
                         <div class="form-group row">
                             <div class="col-12">
-                                <a asp-page="Home" asp-page-handler="Logout">Logout</a>
+                                @await Html.PartialAsync("_HomeTagsRatingPartial", Model)
                             </div>
                         </div>
                     </div>

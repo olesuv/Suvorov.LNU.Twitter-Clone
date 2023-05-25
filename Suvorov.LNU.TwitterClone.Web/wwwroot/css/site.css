@@ -122,23 +122,23 @@ a:hover {
 }
 
 .QuickListElement {
-  padding-top: 10%;
+    padding-top: 10%;
+    font-weight: bold;
 }
 
 .QuickListElement:hover {
-  font-weight: bold;
   color: #411b67;
 }
 
 .PostButton {
-  background-color: #7d0ded;
-  color: white;
-  transition-duration: 0.5s;
-  display: inline-block;
-  text-align: center;
-  width: 100%;
-  font-weight: 800;
-  padding: 5%;
+    background-color: #7d0ded;
+    color: white;
+    transition-duration: 0.5s;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-weight: 800;
+    padding: 5%;
 }
 
 .PostButtonInsidePost:hover {
@@ -260,4 +260,22 @@ textarea {
     padding-right: 0.6em;
     padding-left: 0.6em;
     border-radius: 10rem;
+}
+
+.TrendsLabel {
+    border-radius: 25px;
+    padding: 20px;
+}
+
+.TrendsLabelTitle {
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
+    font-size: x-large;
+}
+
+.TrendsList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

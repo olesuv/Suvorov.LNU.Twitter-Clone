@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Suvorov.LNU.TwitterClone.Models.Database;
 
 namespace Suvorov.LNU.TwitterClone.Database
@@ -8,6 +9,10 @@ namespace Suvorov.LNU.TwitterClone.Database
         public DbSet<User> User { get; set; }
 
         public DbSet<Post> Post { get; set; }
+
+        public DbSet<PostTag> PostTag { get; set; }
+
+        public DbSet<PostTagCount> PostTagCount { get; set; }
 
         public NetworkDbContext() { }
 
