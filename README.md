@@ -138,7 +138,6 @@ dotnet run
 - Change `Home` page. Changed home page apperreance.
 - Change `Post button`. Redesigned post button.
 - Change `Post area`. Made borders for post apperreance.
-# Lab 4
 Kozariz Volodymyr
 My project [Edelveis](https://github.com/odvova/Edelveis).
 
