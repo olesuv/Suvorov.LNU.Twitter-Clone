@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Suvorov.LNU.TwitterClone.Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "OPENAI_API_KEY": "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"
+      }
+    }
+  }
+}

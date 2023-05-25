@@ -1,0 +1,106 @@
+﻿@page
+@model UserService
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<style type="text/css">
+    .error {
+        color: red;
+        font-size: 10px;
+    }
+    .form-group{
+        margin-top: 20px;
+    }
+</style>
+
+<br />
+<h2 class="text-center"><b>Create your profile</b></h2>
+<br />
+
+<div class="container d-flex justify-content-center align-self-center">
+    <form method="post">
+        <div class="form-group row">
+            <div class="col-12">
+                <input asp-for="User.Name" class="form-control" placeholder="Name" />
+                <span asp-validation-for="User.Name" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">@@</div>
+                    </div>
+                    <input asp-for="User.UserName" class="form-control" placeholder="username" />
+                </div>
+                <span asp-validation-for="User.UserName" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <input asp-for="User.EmailAddress" type="email" class="form-control" placeholder="example@gmail.com"/>
+                <span asp-validation-for="User.EmailAddress" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <input asp-for="User.Password" type="password" class="form-control" placeholder="Password">
+                <span asp-validation-for="User.Password" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <input asp-for="User.ConfirmPassword" type="password" class="form-control" placeholder="Confirm password">
+                <span asp-validation-for="User.ConfirmPassword" class="error"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5">
+                <label>Month:</label>
+                <select asp-for="User.SelectedMonth" class="form-control">
+                    @foreach (var month in Model.Months)
+                    {
+                        <option value="@month">@month</option>
+                    }
+                </select>
+                @Html.ValidationMessage("User.SelectedMonth")
+            </div>
+            <div class="col-3">
+                <label>Day:</label>
+                <select asp-for="User.SelectedDay" class="form-control">
+                    @foreach (var day in Model.Days)
+                    {
+                        <option value="@day">@day</option>
+                    }
+                </select>
+                @Html.ValidationMessage("User.SelectedDay")
+            </div>
+            <div class="col-4">
+                <label>Year:</label>
+                <select asp-for="User.SelectedYear" class="form-control">
+                    @foreach (var year in Model.Years)
+                    {
+                        <option value="@year">@year</option>
+                    }
+                </select>
+                @Html.ValidationMessage("User.SelectedYear")
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-12">
+                <input type="submit" class="btn btn-block rounded-pill SubmitButton form-control" asp-page-handler="Submit" />
+            </div>
+        </div>
+    </form>
+
+    <div class="AlreadySignedUp">
+        <h>Already have an account? <a href="/LoginUser">Sign In</a></h>
+    </div>
+</div>
