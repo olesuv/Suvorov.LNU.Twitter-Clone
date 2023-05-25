@@ -145,6 +145,8 @@ My project [Edelveis](https://github.com/odvova/Edelveis).
 [Pull request](https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone/pull/3)
 
 ## Lab-4
--Kozariz Volodymyr
--My project [Edelveis](https://github.com/odvova/Edelveis).
--[Pull request] (https://github.com/odvova/Suvorov.LNU.Twitter-Clone/pull/1)
+Kozariz Volodymyr
+
+My project [Edelveis](https://github.com/odvova/Edelveis).
+
+[Pull request](https://github.com/odvova/Suvorov.LNU.Twitter-Clone/pull/1)
