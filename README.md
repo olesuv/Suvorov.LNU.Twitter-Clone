@@ -100,7 +100,7 @@ dotnet run
 	- [ ] List of following people's posts.
 	- [x] List of recomendation posts.
 	- [ ] List of recomendation people.
-	- [ ] List of popular hashtags.
+	- [x] List of popular hashtags.
 	- [ ] Searchbar.
 	
 5. **Profile page**
@@ -145,9 +145,9 @@ My project [Edelveis](https://github.com/odvova/Edelveis).
 # Lab 4
 - Reviewer: Voievoda Vladislav 
 - My project [project](https://github.com/Vladislav43/WEB)
-- [Pull request](https://github.com/Vladislav43/Suvorov.LNU.Twitter-Clone/pull/1) with fixing.
+- [Pull request](https://github.com/Vladislav43/Suvorov.LNU.Twitter-Clone/pull/1)
 
-## Lab-4
+## Lab 4
 - Reviewer: Kozariz Volodymyr
 - My project [Edelveis](https://github.com/odvova/Edelveis).
 - [Pull request](https://github.com/odvova/Suvorov.LNU.Twitter-Clone/pull/1)
