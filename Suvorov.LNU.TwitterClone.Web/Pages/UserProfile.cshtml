@@ -1,11 +1,12 @@
-﻿@page
-@model Suvorov.LNU.TwitterClone.Web.Pages.HomeModel
+﻿@page "{userId?}"
+
+@model UserProfileModel
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "User profile";
 }
 
-<div id="OuterContainer">
-    @inject IHttpContextAccessor HttpContextAccessor
+
+@inject IHttpContextAccessor HttpContextAccessor
 
     @if (HttpContextAccessor?.HttpContext?.Session.GetString("userEmailAddress") == null)
     {
@@ -15,19 +16,20 @@
     {
     <div class="container">
         <div class="row">
-            <div class="col-md-3 d-none d-sm-block" style="position: relative;">
-                @await Html.PartialAsync("_HomeLeftNavbarPartial", Model)
+            <div class="col-md-3 d-none d-sm-block">
+                @await Html.PartialAsync("_UserProfileLeftNavbarPartial", Model)
             </div>
 
             <div class="col-md-6 col-sm-12" style="height: 100vh;">
-                @await Html.PartialAsync("_HomePostFormPartial", Model)
-                @await Html.PartialAsync("_HomePostsPartial", Model)
+                @await Html.PartialAsync("_UserProfileInfo", Model)
+                <hr />
+                @await Html.PartialAsync("_UserProfilePostsPartial", Model)
             </div>
 
             <div class="col-md-3 d-none d-sm-block">
                 <div class="form-group row">
                     <div class="col-12">
-                        @await Html.PartialAsync("_HomeTagsRatingPartial", Model)
+                        @await Html.PartialAsync("_UserProfileTagsRatingPartial", Model)
                     </div>
                 </div>
             </div>
@@ -38,4 +40,3 @@
         </footer>
     </div>
     }
-</div>

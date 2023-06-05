@@ -1,0 +1,14 @@
+﻿@model UserProfileModel
+
+<div class="TrendsLabel BackgroundColorObjects">
+    <span class="TrendsLabelTitle">Trends for you</span>
+    <ul class="TrendsList">
+        @foreach (var trend in Model.mostUsedTags)
+        {
+            <li class="fw-bold">
+                #@trend.Name
+                <p class="h6 text-muted">@trend.Count Tweets</p>
+            </li>
+        }
+    </ul>
+</div>

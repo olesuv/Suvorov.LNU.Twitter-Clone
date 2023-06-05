@@ -1,0 +1,44 @@
+﻿@model HomeModel
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 LeftNavbarFixed">
+            <a href="/Index">
+                <img src="~/logo-icon.png" height="50" width="50" />
+            </a>
+
+            <ul class="QuickList">
+                <li class="QuickListElement">
+                    <a href="/Home" style="color: #7d0ded;">Home</a>
+                </li>
+                <li class="QuickListElement">Explore</li>
+                <li class="QuickListElement">Notifications</li>
+                <li class="QuickListElement">Messages</li>
+                <li class="QuickListElement">
+                    <a href="@Url.Page("UserProfile", new { userId = Model.UserInfo.Id })">Profile</a>
+                </li>
+                <li class="QuickListElement"><a asp-page="Home" asp-page-handler="Logout">Logout</a></li>
+                <li>
+                    <button class="btn rounded-pill PostButton" asp-page="CreatePost" onclick="scrollToPost()">Tweet</button>
+                </li>
+            </ul>
+
+            <div class="HomeProfileBadge BackgroundColorObjects">
+                <div class="col-sm-12 fw-bold">
+                    <a href="@Url.Page("UserProfile", new { userId = Model.UserInfo.Id })">@Model.UserInfo.Name</a>
+                </div>
+                <div class="col-sm-12 text-muted">@@@Model.UserInfo.UserName</div>
+
+                <div class="col-sm-12">
+                    <br />
+                    <img src="~/icon-calendar.png" alt="Registration Date" height="15" width="15" />
+                    <h class="text-muted">Joined @Model.UserInfo.RegistrationDate.Value.ToLongDateString()</h>
+
+                    <br />
+                    <img src="~/birthday-cake.png" alt="Birthday" height="15" width="15" />
+                    <h class="text-muted">@Model.UserInfo.Birthday.ToLongDateString()</h>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

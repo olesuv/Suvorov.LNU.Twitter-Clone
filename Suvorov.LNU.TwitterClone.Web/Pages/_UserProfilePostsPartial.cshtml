@@ -1,0 +1,44 @@
+﻿@model UserProfileModel
+@inject Suvorov.LNU.TwitterClone.Database.Services.UserService userService
+
+@foreach (var post in Model.ProfileUserPosts)
+{
+    <div class="feed" style="margin-top: 1%;">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img src="https://via.placeholder.com/150" alt="User avatar" class="img-fluid rounded-circle">
+                    </div>
+                    <div class="col-sm-10">
+                        <h class="card-title">
+                            <h class="PostUserName">@Html.DisplayFor(postItem => post.User.Name)</h>
+                            <h class="PostUsername">@@@Html.DisplayFor(postItem => post.User.UserName)</h>
+                        </h>
+                        <h class="text-muted">@Html.DisplayFor(postItem => post.PostDate)</h>
+                        <p class="card-text">@Html.DisplayFor(postItem => post.TextContent)</p>
+                        <p class="align-text-bottom">
+                            @foreach (var tag in post.Tags)
+                            {
+                                <span class="badge badge-cutom">#@tag.Name</span>
+                            }
+                        </p>
+                        <hr>
+                        @if (await userService.CheckIfUserLikedPost(Model.VisitorUser, post))
+                        {
+                            <form class="align-text-bottom" method="post" asp-page-handler="UserUnLikePost" asp-route-currentPostId="@post.Id">
+                                <button class="btn rounded-pill PostButton LikeButton" type="submit">@Html.DisplayFor(postItem => post.LikesAmount) Unlike</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form class="align-text-bottom" method="post" asp-page-handler="UserLikePost" asp-route-currentPostId="@post.Id">
+                                <button class="btn rounded-pill PostButton LikeButton" type="submit">@Html.DisplayFor(postItem => post.LikesAmount) Like</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Suvorov.LNU.TwitterClone.Models.Database;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Suvorov.LNU.TwitterClone.Database.Services
 {
@@ -15,9 +12,26 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<Post>> SortByPostDate()
+        public async Task<List<Post>> SortAllPostsByPostDate()
         {
             return await _dbContext.Post.OrderByDescending(post => post.PostDate).ToListAsync();
+        }
+
+        public async Task<List<Post>> GetAllUserPosts(User user)
+        {
+            return await _dbContext.Post.Where(post => post.User == user).ToListAsync();
+        }
+
+        public async Task<int> CountAllUserPosts(User user)
+        {
+            List<Post> allUserPosts = await GetAllUserPosts(user);
+            return allUserPosts.Count();
+        }
+
+        public async Task<List<Post>> SortUserPostsByPostDate(User user)
+        {
+            List<Post> allUserPostsSortedByDate = await GetAllUserPosts(user);
+            return (List<Post>)allUserPostsSortedByDate.OrderByDescending(post => post.PostDate);
         }
     }
 }

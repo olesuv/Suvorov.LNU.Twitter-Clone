@@ -52,5 +52,10 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
         {
             return await _dbContext.Set<User>().FirstOrDefaultAsync(x => x.EmailAddress == email);
         }
+
+        public async Task<bool> CheckIfUserLikedPost(User currentUser, Post currentPost)
+        {
+            return await _dbContext.Set<Like>().AnyAsync(like => like.User == currentUser && like.Post == currentPost);
+        }
     }
 }

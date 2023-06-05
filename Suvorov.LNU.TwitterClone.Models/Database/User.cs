@@ -19,5 +19,7 @@
         public string? ProfileImage { get; set; }
 
         public virtual List<Post>? Posts { get; set; }
+
+        public virtual List<Like>? LikedPosts { get; set; }
     }
 }

@@ -36,12 +36,16 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         private readonly PostTagCountService _postTagCountService;
 
-        public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, PostTagCountService postTagCountService, IOptions<AppConfig> configuration)
+        private readonly LikeService _likeService;
+
+        public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, 
+                        PostTagCountService postTagCountService, LikeService likeService, IOptions<AppConfig> configuration)
         {
             _userService = userService;
             _postService = postService;
             _postTagService = postTagService;
             _postTagCountService = postTagCountService;
+            _likeService = likeService;
             _configuration = configuration;
 
             OpenAI_API_KEY = _configuration.Value.OpenAI_API_KEY;
@@ -138,6 +142,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             };
 
             await _postTagService.Create(newPostAITag);
+            await _postTagCountService.IncrementTagCount(newPostAITag);
 
             List<string> generatedHashtags = await tweetsGenerator.GenerateTweetHashtags(newPost.TextContent);
 
@@ -151,6 +156,57 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
                 await _postTagService.Create(newPostTag);
                 await _postTagCountService.IncrementTagCount(newPostTag);
+            }
+
+            return new RedirectToPageResult("/Home");
+        }
+
+        public async Task<IActionResult> OnPostUserLikePostAsync(int currentPostId)
+        {
+            var currentPost = await _postService.GetById(currentPostId);
+
+            var userEmail = HttpContext.Session.GetString("userEmailAddress");
+            var currentUser = await _userService.GetByEmail(userEmail);
+
+            var newLike = new Like()
+            {
+                Post = currentPost,
+                User = currentUser
+            };
+
+            await _likeService.Create(newLike);
+
+            currentPost.LikesAmount++;
+
+            currentPost.Likes ??= new List<Like>();
+            currentPost.Likes.Add(newLike);
+
+            currentUser.LikedPosts ??= new List<Like>();
+            currentUser.LikedPosts.Add(newLike);
+
+            await _postService.Update(currentPost);
+
+            return new RedirectToPageResult("/Home");
+        }
+
+        public async Task<IActionResult> OnPostUserUnLikePostAsync(int currentPostId)
+        {
+            var currentPost = await _postService.GetById(currentPostId);
+
+            var userEmail = HttpContext.Session.GetString("userEmailAddress");
+            var currentUser = await _userService.GetByEmail(userEmail);
+
+            var like = await _likeService.GetLikeByUserAndPost(currentUser, currentPost);
+
+            if (like != null)
+            {
+                await _likeService.Delete(like);
+
+                currentPost.LikesAmount--;
+
+                currentUser?.LikedPosts?.Remove(like);
+
+                await _postService.Update(currentPost);
             }
 
             return new RedirectToPageResult("/Home");

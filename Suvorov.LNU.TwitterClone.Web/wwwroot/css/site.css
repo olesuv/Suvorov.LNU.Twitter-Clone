@@ -24,13 +24,13 @@ body {
 }
 
 a {
-  color: #7d0ded;
+  color: black;
   text-decoration: none;
 }
 
 a:hover {
   color: #5f14aa;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .btn:focus,
@@ -122,12 +122,8 @@ a:hover {
 }
 
 .QuickListElement {
-    padding-top: 10%;
+    padding: 20px;
     font-weight: bold;
-}
-
-.QuickListElement:hover {
-  color: #411b67;
 }
 
 .PostButton {
@@ -136,9 +132,10 @@ a:hover {
     transition-duration: 0.5s;
     display: inline-block;
     text-align: center;
-    width: 100%;
+    width: 63%;
     font-weight: 800;
-    padding: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .PostButtonInsidePost:hover {
@@ -265,6 +262,7 @@ textarea {
 .TrendsLabel {
     border-radius: 25px;
     padding: 20px;
+    position: fixed;
 }
 
 .TrendsLabelTitle {
@@ -278,4 +276,28 @@ textarea {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.LikeButton{
+    width: 20%;
+    padding: 5px;
+}
+
+.UserProfileName {
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -1px;
+    font-size: x-large;
+}
+
+.HomeProfileBadge {
+    border-radius: 25px;
+    padding: 20px;
+    position: fixed;
+    bottom: 3%;
+    width: 15%;
+}
+
+.LeftNavbarFixed {
+    position: fixed;
 }

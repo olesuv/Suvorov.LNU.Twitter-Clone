@@ -1,0 +1,25 @@
+﻿@model UserProfileModel
+@inject Suvorov.LNU.TwitterClone.Database.Services.UserService userService
+
+<div class="row">
+    <div class="col-sm-12">
+        <h class="UserProfileName">@Model.ProfileUser.Name</h>
+    </div>
+
+    <div class="col-sm-12">
+        <h class="text-muted">@@@Model.ProfileUser.UserName</h>
+    </div>
+
+    <div class="col-sm-12" style="margin-top: 3%;">
+        <img src="~/icon-calendar.png" alt="Registration Date" height="15" width="15" />
+        <h class="text-muted">Joined @Model.ProfileUser.RegistrationDate.Value.ToLongDateString()&emsp;</h>
+
+        <img src="~/birthday-cake.png" alt="Birthday" height="15" width="15" />
+        <h class="text-muted">@Model.ProfileUser.Birthday.ToLongDateString()</h>
+    </div>
+
+   <div class="col-sm-12" style="margin-bottom: 1%;">
+       <h class="text-muted"><h class="fw-bold text-black">203</h> Following</h>
+       <h class="text-muted"><h class="fw-bold text-black">23.1K</h> Folowers</h>
+   </div>
+</div>
