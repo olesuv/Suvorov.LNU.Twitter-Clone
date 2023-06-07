@@ -1,12 +1,43 @@
 ﻿@model UserProfileModel
 @inject Suvorov.LNU.TwitterClone.Database.Services.UserService userService
+@inject Suvorov.LNU.TwitterClone.Database.Services.FollowService followService
+@inject Suvorov.LNU.TwitterClone.Database.Services.FolloweeService followeeService
 
 <div class="row">
     <div class="col-sm-12">
-        <h class="UserProfileName">@Model.ProfileUser.Name</h>
+        <div class="custom-navbar">
+            <div class="row">
+                <div class="col-md-8">
+                    <h class="UserProfileName">@Model.ProfileUser.Name</h>
+                </div>
+                <div class="col-md-4">
+                    @if (Model.ProfileUser == Model.VisitorUser)
+                    {
+                        <form class="align-text-bottom" method="post" asp-page-handler="EditProifle">
+                            <input type="hidden" name="userId" value="@Model.ProfileUser.Id" />
+                            <button class="btn rounded-pill PostButton EditProfile" type="submit">Edit profile</button>
+                        </form>
+                    }
+                    else if (await followService.CheckIfFollowerExists(Model.ProfileUser, Model.VisitorUser))
+                    {
+                        <form class="align-text-bottom" method="post" asp-page-handler="UnFollowUser">
+                            <input type="hidden" name="userId" value="@Model.ProfileUser.Id" />
+                            <button class="btn rounded-pill PostButton UnfollowButton" type="submit">Following</button>
+                        </form>
+                    }
+                    else if (!await followService.CheckIfFollowerExists(Model.ProfileUser, Model.VisitorUser))
+                    {
+                        <form class="align-text-bottom" method="post" asp-page-handler="FollowUser">
+                            <input type="hidden" name="userId" value="@Model.ProfileUser.Id" />
+                            <button class="btn rounded-pill PostButton FollowButton" type="submit">Follow</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-sm-12" style="margin-top: 7%;">
         <h class="text-muted">@@@Model.ProfileUser.UserName</h>
     </div>
 
@@ -18,8 +49,8 @@
         <h class="text-muted">@Model.ProfileUser.Birthday.ToLongDateString()</h>
     </div>
 
-   <div class="col-sm-12" style="margin-bottom: 1%;">
-       <h class="text-muted"><h class="fw-bold text-black">203</h> Following</h>
-       <h class="text-muted"><h class="fw-bold text-black">23.1K</h> Folowers</h>
-   </div>
+    <div class="col-sm-12" style="margin-bottom: 1%;">
+        <h class="text-muted"><h class="fw-bold text-black">@await followeeService.GetFolloweeAmount(Model.ProfileUser)</h> Following</h>
+        <h class="text-muted"><h class="fw-bold text-black">@await followService.GetFollowersAmount(Model.ProfileUser)</h> Followers</h>
+    </div>
 </div>

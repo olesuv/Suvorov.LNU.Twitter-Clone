@@ -14,6 +14,10 @@ namespace Suvorov.LNU.TwitterClone.Database
 
         public DbSet<PostTagCount> PostTagCount { get; set; }
 
+        public DbSet<Follow> Follow { get; set; }
+
+        public DbSet<Followee> Followee { get; set; }
+
         public NetworkDbContext() { }
 
         public NetworkDbContext(DbContextOptions<NetworkDbContext> options) : base(options) { }

@@ -11,8 +11,10 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 {
     public class UserProfileModel : PageModel
     {
+        [BindProperty]
         public User VisitorUser { get; set; }
 
+        [BindProperty]
         public User ProfileUser { get; set; }
 
         public IList<Post> ProfileUserPosts { get; set; }
@@ -21,27 +23,30 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         public List<(string Name, int Count)> mostUsedTags { get; set; }
 
-        private readonly IOptions<AppConfig> _configuration;
 
         private readonly Database.Services.UserService _userService;
 
         private readonly PostService _postService;
 
-        private readonly PostTagService _postTagService;
 
         private readonly PostTagCountService _postTagCountService;
 
         private readonly LikeService _likeService;
 
-        public UserProfileModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService,
-                PostTagCountService postTagCountService, LikeService likeService, IOptions<AppConfig> configuration)
+        private readonly FollowService _followService;
+
+        private readonly FolloweeService _followeeService;
+
+        public UserProfileModel(Database.Services.UserService userService, PostService postService, 
+            PostTagCountService postTagCountService, LikeService likeService, FollowService followService,
+            FolloweeService followeeService)
         {
             _userService = userService;
             _postService = postService;
-            _postTagService = postTagService;
             _postTagCountService = postTagCountService;
             _likeService = likeService;
-            _configuration = configuration;
+            _followService = followService;
+            _followeeService = followeeService;
         }
 
         public async Task<IActionResult> OnGetAsync(int userId)
@@ -114,6 +119,26 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
                 await _postService.Update(currentPost);
             }
+
+            return new RedirectToPageResult("/Home");
+        }
+
+        public async Task<IActionResult> OnPostFollowUserAsync(int userId)
+        {
+            await OnGetAsync(userId);
+
+            await _followService.Follow(ProfileUser, VisitorUser);
+            await _followeeService.Followee(VisitorUser, ProfileUser);
+
+            return new RedirectToPageResult("/Home");
+        }
+
+        public async Task<IActionResult> OnPostUnFollowUserAsync(int userId)
+        {
+            await OnGetAsync(userId);
+
+            await _followService.Unfollow(ProfileUser, VisitorUser);
+            await _followeeService.Unfollowee(VisitorUser, ProfileUser);
 
             return new RedirectToPageResult("/Home");
         }

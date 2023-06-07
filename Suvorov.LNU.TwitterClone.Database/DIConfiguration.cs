@@ -19,6 +19,8 @@ namespace Suvorov.LNU.TwitterClone.Database
             services.AddScoped<PostTagService, PostTagService>();
             services.AddScoped<PostTagCountService, PostTagCountService>();
             services.AddScoped<LikeService, LikeService>();
+            services.AddScoped<FollowService, FollowService>();
+            services.AddScoped<FolloweeService, FolloweeService>();
         }
     }
 }

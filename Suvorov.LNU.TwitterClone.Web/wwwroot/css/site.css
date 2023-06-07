@@ -301,3 +301,38 @@ textarea {
 .LeftNavbarFixed {
     position: fixed;
 }
+
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    width: 38%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 999;
+}
+
+.TrendsLabel.BackgroundColorObjects {
+    margin-top: 2%;
+}
+
+.FollowButton{
+    padding: 3%;
+}
+
+.UnfollowButton {
+    padding: 3%;
+    background-color: white;
+    color: black;
+    border: grey;
+}
+
+.EditProfile {
+    border-color: rgb(207, 217, 222);
+    background-color: white;
+    color: black;
+}
+
+.EditProfile:hover{
+    background-color: #E7E7E8;
+    color: black;
+}

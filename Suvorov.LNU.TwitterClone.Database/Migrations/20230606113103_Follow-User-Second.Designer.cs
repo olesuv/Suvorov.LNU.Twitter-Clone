@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Suvorov.LNU.TwitterClone.Database;
 
@@ -11,9 +12,11 @@ using Suvorov.LNU.TwitterClone.Database;
 namespace Suvorov.LNU.TwitterClone.Database.Migrations
 {
     [DbContext(typeof(NetworkDbContext))]
-    partial class NetworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230606113103_Follow-User-Second")]
+    partial class FollowUserSecond
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,27 +76,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.HasIndex("CuurentUserId");
 
                     b.ToTable("Follow");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Followee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CurrentUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("FollowingAmount")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CurrentUserId");
-
-                    b.ToTable("Followee");
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Like", b =>
@@ -210,9 +192,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.Property<int?>("FollowId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FolloweeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -236,8 +215,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FollowId");
-
-                    b.HasIndex("FolloweeId");
 
                     b.ToTable("User");
                 });
@@ -264,15 +241,6 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                         .HasForeignKey("CuurentUserId");
 
                     b.Navigation("CuurentUser");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Followee", b =>
-                {
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.User", "CurrentUser")
-                        .WithMany()
-                        .HasForeignKey("CurrentUserId");
-
-                    b.Navigation("CurrentUser");
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Like", b =>
@@ -322,20 +290,11 @@ namespace Suvorov.LNU.TwitterClone.Database.Migrations
                     b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Follow", null)
                         .WithMany("UsersWhoFollows")
                         .HasForeignKey("FollowId");
-
-                    b.HasOne("Suvorov.LNU.TwitterClone.Models.Database.Followee", null)
-                        .WithMany("UsersWhomFollowing")
-                        .HasForeignKey("FolloweeId");
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Follow", b =>
                 {
                     b.Navigation("UsersWhoFollows");
-                });
-
-            modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Followee", b =>
-                {
-                    b.Navigation("UsersWhomFollowing");
                 });
 
             modelBuilder.Entity("Suvorov.LNU.TwitterClone.Models.Database.Post", b =>
