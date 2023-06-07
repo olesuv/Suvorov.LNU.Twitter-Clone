@@ -97,16 +97,17 @@ dotnet run
 	- [x] Password hashing.
 	
 4. **Home Page**
-	- [ ] List of following people's posts.
-	- [x] List of recomendation posts.
+	- [x] List of following people's posts.
+	- [ ] List of recomendation posts.
 	- [ ] List of recomendation people.
 	- [x] List of popular hashtags.
 	- [ ] Searchbar.
 	
 5. **Profile page**
-	- [ ] List of followers.
-	- [ ] List of whom user follows and also follows current person.
-	- [ ] List of whom reads.
+	- [x] Count of followers.
+	- [x] Count of followings.
+	- [ ] Dispaly list of whom user follows and also follows current person.
+	- [ ] Display list of whom reads.
 	- [x] List of posts.
 	- [ ] List of posts which user liked.
 	
