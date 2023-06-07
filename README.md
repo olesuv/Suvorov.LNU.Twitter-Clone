@@ -107,11 +107,11 @@ dotnet run
 	- [ ] List of followers.
 	- [ ] List of whom user follows and also follows current person.
 	- [ ] List of whom reads.
-	- [ ] List of posts.
+	- [x] List of posts.
 	- [ ] List of posts which user liked.
 	
 6. **Post Page**
-	- [ ] Count of likes, ect.
+	- [x] Count of likes, ect.
 	- [x] Post text info.
 	- [ ] Post media info(mb).
 	- [x] Hashtags.
@@ -132,8 +132,7 @@ dotnet run
 
 :calling: [Telegram](https://t.me/suph0mi3)
 
- ## Lab-3
-
+ ## Lab 3
 **Task/s:**
 - Change `Home` page. Changed home page apperreance.
 - Change `Post button`. Redesigned post button.
@@ -142,7 +141,7 @@ Kozariz Volodymyr
 My project [Edelveis](https://github.com/odvova/Edelveis).
 [Pull request](https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone/pull/3)
 
-# Lab 4
+## Lab 4
 - Reviewer: Voievoda Vladislav 
 - My project [project](https://github.com/Vladislav43/WEB)
 - [Pull request](https://github.com/Vladislav43/Suvorov.LNU.Twitter-Clone/pull/1)
