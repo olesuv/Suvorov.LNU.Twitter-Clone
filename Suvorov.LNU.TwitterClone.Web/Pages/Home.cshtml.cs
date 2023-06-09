@@ -100,7 +100,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
             await _postService.Create(newPost);
 
-            List<string> tags = await DetectTagsInPost.ExtractTagsFromPost(Post.TextContent);
+            List<string> tags = await GeneratedTweets.ExtractTagsFromPost(Post.TextContent);
 
             foreach (var tag in tags)
             {
