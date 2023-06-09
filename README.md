@@ -98,7 +98,7 @@ dotnet run
 	
 4. **Home Page**
 	- [x] List of following people's posts.
-	- [ ] List of recomendation posts.
+	- [x] List of recomendation posts.
 	- [ ] List of recomendation people.
 	- [x] List of popular hashtags.
 	- [ ] Searchbar.
@@ -118,7 +118,7 @@ dotnet run
 	- [x] Hashtags.
 	
 7. **Features and algorithms**
-	- [ ] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to your post.
+	- [x] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to your post.
 	- [ ] Friends recomendations. When someone follows your friend, probably you may know this 'someone'. 
 	- [ ] Search of users, posts.
 
