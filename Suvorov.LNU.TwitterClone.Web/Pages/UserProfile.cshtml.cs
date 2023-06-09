@@ -85,7 +85,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 Post = currentPost,
                 User = currentUser
             };
-            // smth wrong with likes
+
             await _likeService.Create(newLike);
 
             currentPost.LikesAmount++;

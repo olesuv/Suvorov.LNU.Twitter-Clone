@@ -57,6 +57,5 @@ namespace Suvorov.LNU.TwitterClone.Test
             Assert.IsInstanceOfType<List<string>>(result);
             Assert.IsTrue(result.Count > 0);
         }
-
     }
 }

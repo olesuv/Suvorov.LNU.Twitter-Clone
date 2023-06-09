@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Algorithms\Suvorov.LNU.TwitterClone.Algorithms.csproj" />
     <ProjectReference Include="..\Suvorov.LNU.TwitterClone.Core\Suvorov.LNU.TwitterClone.Core.csproj" />
   </ItemGroup>
 

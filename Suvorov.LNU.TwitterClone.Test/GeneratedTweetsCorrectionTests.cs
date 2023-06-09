@@ -4,14 +4,14 @@ using Suvorov.LNU.TwitterClone.Algorithms;
 namespace Suvorov.LNU.TwitterClone.Test
 {
     [TestClass]
-    public class DetectTagsInPostTests : TestBase
+    public class GeneratedTweetsCorrectionTests : TestBase
     {
         [TestMethod]
         public async Task ExtractTagsFromPostTest()
         {
             string userPost = "Hello #world! This is a #test.";
 
-            List<string> tags = await DetectTagsInPost.ExtractTagsFromPost(userPost);
+            List<string> tags = await GeneratedTweetsCorrection.ExtractTagsFromPost(userPost);
 
             foreach (string tag in tags) 
             {
@@ -28,11 +28,24 @@ namespace Suvorov.LNU.TwitterClone.Test
         {
             string userPost = "Hello #world! This is a #test.";
 
-            string cleanedPost = await DetectTagsInPost.RemoveTagsFromPost(userPost);
+            string cleanedPost = await GeneratedTweetsCorrection.RemoveTagsFromPost(userPost);
 
             Console.WriteLine(cleanedPost);
 
             Assert.AreEqual("Hello This is a", cleanedPost);
+        }
+
+        [TestMethod]
+        public async Task RemoveQuotesTest()
+        {
+            string tweetWithQuotes = "\"This is a quoted tweet.\"";
+            string tweetWithoutQuotes = "This is a tweet without quotes.";
+
+            string resultWithQuotes = await GeneratedTweetsCorrection.RemoveQuotes(tweetWithQuotes);
+            string resultWithoutQuotes = await GeneratedTweetsCorrection.RemoveQuotes(tweetWithoutQuotes);
+
+            Assert.AreEqual("This is a quoted tweet.", resultWithQuotes);
+            Assert.AreEqual(tweetWithoutQuotes, resultWithoutQuotes);
         }
     }
 }

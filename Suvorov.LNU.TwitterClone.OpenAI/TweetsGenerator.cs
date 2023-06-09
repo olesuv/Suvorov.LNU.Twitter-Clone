@@ -3,6 +3,7 @@ using OpenAI_API.Chat;
 using OpenAI_API;
 using Suvorov.LNU.TwitterClone.Core.Constants;
 using OpenAI_API.Moderation;
+using Suvorov.LNU.TwitterClone.Algorithms;
 
 namespace Suvorov.LNU.TwitterClone.OpenAI
 {
@@ -42,7 +43,7 @@ namespace Suvorov.LNU.TwitterClone.OpenAI
                 generatedTweet = generatedTweet.Substring(0, hashtagIndex);
             }
 
-            return generatedTweet;
+            return await GeneratedTweetsCorrection.RemoveQuotes(generatedTweet);
         }
 
         public async Task<List<string>> GenerateTweetHashtags(string userTweet)

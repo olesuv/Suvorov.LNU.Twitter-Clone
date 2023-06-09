@@ -1,6 +1,6 @@
 ﻿namespace Suvorov.LNU.TwitterClone.Algorithms
 {
-    public class DetectTagsInPost
+    public class GeneratedTweetsCorrection
     {
         public static async Task<List<string>> ExtractTagsFromPost(string userPost)
         {
@@ -37,6 +37,24 @@
             string cleanedPost = string.Join(" ", cleanedWords);
 
             return cleanedPost;
+        }
+
+        public static Task<string> RemoveQuotes(string OpenAITweet)
+        {
+            if (string.IsNullOrEmpty(OpenAITweet))
+            {
+                return Task.FromResult(OpenAITweet);
+            }
+
+            char[] quoteChars = { '\"', '\'' };
+            string trimmedTweet = OpenAITweet.Trim();
+
+            if (quoteChars.Contains(trimmedTweet[0]) && quoteChars.Contains(trimmedTweet[^1]))
+            {
+                return Task.FromResult(trimmedTweet[1..^1]);
+            }
+
+            return Task.FromResult(OpenAITweet);
         }
     }
 }
