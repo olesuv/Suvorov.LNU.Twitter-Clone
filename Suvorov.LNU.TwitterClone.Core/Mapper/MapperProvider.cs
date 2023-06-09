@@ -29,8 +29,8 @@ namespace Suvorov.LNU.TwitterClone.Core.Mapper
                     .ForMember(dest => dest.PhoneNumber, opt => opt.Ignore())
                     .ForMember(dest => dest.ProfileImage, opt => opt.Ignore());
 
-                cfg.CreateMap<CreatePostRequest, Post>()
-                    .ForMember(dest => dest.Id, opt => opt.Ignore()) // Ignore the Id property if it's not needed
+                cfg.CreateMap<Post, Post>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore())
                     .ForMember(dest => dest.TextContent, opt => opt.MapFrom(src => src.TextContent))
                     .ForMember(dest => dest.ImageContent, opt => opt.Ignore())
                     .ForMember(dest => dest.PostDate, opt => opt.MapFrom(src => DateTime.Now))
@@ -52,14 +52,19 @@ namespace Suvorov.LNU.TwitterClone.Core.Mapper
                     .ForMember(dest => dest.Post, opt => opt.Ignore());
 
                 cfg.CreateMap<Like, Like>()
-                    .ForMember(dest => dest.Post, opt => opt.Ignore())
-                    .ForMember(dest => dest.User, opt => opt.Ignore());
+                    .ForMember(dest => dest.Post, opt => opt.MapFrom(src => src.Post))
+                    .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User));
 
                 cfg.CreateMap<Comment, Comment>()
                     .ForMember(dest => dest.CommentContent, opt => opt.MapFrom(src => src.CommentContent))
                     .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
                     .ForMember(dest => dest.Post, opt => opt.Ignore())
                     .ForMember(dest => dest.User, opt => opt.Ignore());
+
+                cfg.CreateMap<Follow, Follow>()
+                    .ForMember(dest => dest.CuurentUser, opt => opt.MapFrom(src => src.CuurentUser))
+                    .ForMember(dest => dest.UsersWhoFollows, opt => opt.MapFrom(src => src.UsersWhoFollows))
+                    .ForMember(dest => dest.FollowersAmount, opt => opt.MapFrom(src => src.FollowersAmount));
             });
 
             config.AssertConfigurationIsValid();

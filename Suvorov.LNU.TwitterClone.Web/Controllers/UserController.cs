@@ -97,6 +97,5 @@ namespace Suvorov.LNU.TwitterClone.API.Controllers
                 return StatusCode(500);
             }
         }
-
     }
 }
