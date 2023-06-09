@@ -38,14 +38,21 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         private readonly LikeService _likeService;
 
+        private readonly FolloweeService _followeeService;
+
+        private readonly IPostRecommendations _postRecommendations;
+
         public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, 
-                        PostTagCountService postTagCountService, LikeService likeService, IOptions<AppConfig> configuration)
+                        PostTagCountService postTagCountService, LikeService likeService, FolloweeService followeeService,
+                        IPostRecommendations postRecommendations, IOptions<AppConfig> configuration)
         {
             _userService = userService;
             _postService = postService;
             _postTagService = postTagService;
             _postTagCountService = postTagCountService;
             _likeService = likeService;
+            _followeeService = followeeService;
+            _postRecommendations = postRecommendations;
             _configuration = configuration;
 
             OpenAI_API_KEY = _configuration.Value.OpenAI_API_KEY;
@@ -60,11 +67,11 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 UserInfo = await _userService.GetByEmail(userEmail);
             }
 
-            var postRecomendations = new PostRecomendations(_postService);
-            Posts = await postRecomendations.GeneratePostRecomendations();
+            Posts = await _postRecommendations.GeneratePostRecommendations(UserInfo);
 
-            mostUsedTags = await _postTagCountService.GetMostUsedTags(10);
+            mostUsedTags = await _postTagCountService.GetMostUsedTags(5);
         }
+
 
         public IActionResult OnGetLogout()
         {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Suvorov.LNU.TwitterClone.Models.Database;
+using System.Formats.Asn1;
 
 namespace Suvorov.LNU.TwitterClone.Database.Services
 {
@@ -80,6 +81,16 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             Followee follow = await _dbContext.Followee.FirstOrDefaultAsync(f => f.CurrentUser == currentUser);
             int followingsAmount = follow?.FollowingAmount ?? 0;
             return followingsAmount;
+        }
+
+        public async Task<List<User>> GetAllFollowees(User currentUser)
+        {
+            List<User> followees = await _dbContext.Followee
+                                         .Where(f => f.CurrentUser.Id == currentUser.Id)
+                                         .SelectMany(f => f.UsersWhomFollowing)
+                                         .ToListAsync();
+
+            return followees;
         }
     }
 }

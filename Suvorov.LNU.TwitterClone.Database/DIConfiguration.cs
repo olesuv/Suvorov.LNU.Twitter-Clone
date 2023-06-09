@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Suvorov.LNU.TwitterClone.Database.Services;
-using Suvorov.LNU.TwitterClone.Models.Database;
 using Suvorov.LNU.TwitterClone.Database.Interfaces;
 
 namespace Suvorov.LNU.TwitterClone.Database
@@ -21,6 +20,7 @@ namespace Suvorov.LNU.TwitterClone.Database
             services.AddScoped<LikeService, LikeService>();
             services.AddScoped<FollowService, FollowService>();
             services.AddScoped<FolloweeService, FolloweeService>();
+            services.AddScoped<IPostRecommendations, PostRecommendations>();
         }
     }
 }

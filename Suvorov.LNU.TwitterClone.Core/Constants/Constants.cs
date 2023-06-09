@@ -9,7 +9,8 @@
             Your main goal is to write me a tweet which is going to be viral. 
             Style of text should be polite. Max tweet characters is 100. 
             Do not write any comments to tweet, only tweet text. 
-            Don't include any hashtags. Idea: "
+            Don't include any hashtags. Don't start or end tweet with quotation marks. 
+            Idea: "
         };
 
         public static readonly string[] OpenAIPromptTweetHashtags = new[]

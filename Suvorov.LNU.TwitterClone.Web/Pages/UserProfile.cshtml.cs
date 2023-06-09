@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
 using Suvorov.LNU.TwitterClone.Algorithms;
+using Suvorov.LNU.TwitterClone.Database;
 using Suvorov.LNU.TwitterClone.Database.Services;
 using Suvorov.LNU.TwitterClone.Models.Configuration;
 using Suvorov.LNU.TwitterClone.Models.Database;
@@ -65,7 +66,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 VisitorUser = await _userService.GetByEmail(visitorUserEmail);
             }
 
-            ProfileUserPosts = await _postService.GetAllUserPosts(ProfileUser);
+            ProfileUserPosts = await _postService.SortUserPostsByPostDate(ProfileUser);
 
             mostUsedTags = await _postTagCountService.GetMostUsedTags(10);
 
@@ -84,7 +85,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 Post = currentPost,
                 User = currentUser
             };
-
+            // smth wrong with likes
             await _likeService.Create(newLike);
 
             currentPost.LikesAmount++;
