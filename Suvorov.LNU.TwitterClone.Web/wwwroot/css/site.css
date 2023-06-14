@@ -263,6 +263,7 @@ textarea {
     border-radius: 25px;
     padding: 20px;
     position: fixed;
+    width: 15%;
 }
 
 .TrendsLabelTitle {
@@ -335,4 +336,21 @@ textarea {
 .EditProfile:hover{
     background-color: #E7E7E8;
     color: black;
+}
+
+.bg-image {
+    position: relative;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

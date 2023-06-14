@@ -1,0 +1,14 @@
+﻿@model UserProfileModel
+
+<div class="HomeProfileBadge BackgroundColorObjects">
+    <span class="TrendsLabelTitle">Who to follow</span>
+    <ul class="TrendsList">
+        @foreach (var user in Model.recommendedUsers)
+        {
+            <li class="fw-bold">
+                <a href="@Url.Page("UserProfile", new { userId = user?.Id })">@Html.DisplayFor(postItem => user.Name)</a>
+                <p class="h6 text-muted">@user.UserName</p>
+            </li>
+        }
+    </ul>
+</div>

@@ -13,11 +13,11 @@
                 <li class="QuickListElement">Notifications</li>
                 <li class="QuickListElement">Messages</li>
                 <li class="QuickListElement">
-                    <a href="@Url.Page("UserProfile", new { userId = Model.VisitorUser.Id })">Profile</a>
+                    <a href="@Url.Page("UserProfile", new { userId = Model.VisitorUser.Id })" style="color: #7d0ded;">Profile</a>
                 </li>
                 <li class="QuickListElement"><a asp-page="Home" asp-page-handler="Logout">Logout</a></li>
                 <li>
-                    <button class="btn rounded-pill PostButton" asp-page="CreatePost" onclick="scrollToPost()">Tweet</button>
+                    <button class="btn rounded-pill PostButton" asp-page-handler="RedirectToHome">Tweet</button>
                 </li>
             </ul>
 

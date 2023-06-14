@@ -20,7 +20,7 @@ namespace Suvorov.LNU.TwitterClone.Database
             services.AddScoped<LikeService, LikeService>();
             services.AddScoped<FollowService, FollowService>();
             services.AddScoped<FolloweeService, FolloweeService>();
-            services.AddScoped<IPostRecommendations, PostRecommendations>();
+            services.AddScoped<IRecommendations, PostRecommendations>();
         }
     }
 }

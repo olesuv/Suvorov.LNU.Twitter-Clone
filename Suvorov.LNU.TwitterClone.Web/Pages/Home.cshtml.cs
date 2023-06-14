@@ -24,6 +24,8 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         public List<(string Name, int Count)> mostUsedTags { get; set; }
 
+        public List<User> recommendedUsers { get; set; }
+
         private readonly string OpenAI_API_KEY;
 
         private readonly IOptions<AppConfig> _configuration;
@@ -40,11 +42,11 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         private readonly FolloweeService _followeeService;
 
-        private readonly IPostRecommendations _postRecommendations;
+        private readonly IRecommendations _recommendations;
 
         public HomeModel(Database.Services.UserService userService, PostService postService, PostTagService postTagService, 
                         PostTagCountService postTagCountService, LikeService likeService, FolloweeService followeeService,
-                        IPostRecommendations postRecommendations, IOptions<AppConfig> configuration)
+                        IRecommendations recommendations, IOptions<AppConfig> configuration)
         {
             _userService = userService;
             _postService = postService;
@@ -52,7 +54,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             _postTagCountService = postTagCountService;
             _likeService = likeService;
             _followeeService = followeeService;
-            _postRecommendations = postRecommendations;
+            _recommendations = recommendations;
             _configuration = configuration;
 
             OpenAI_API_KEY = _configuration.Value.OpenAI_API_KEY;
@@ -65,11 +67,14 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             if (!string.IsNullOrEmpty(userEmail))
             {
                 UserInfo = await _userService.GetByEmail(userEmail);
+                Posts = await _recommendations.GeneratePostRecommendations(UserInfo);
+                mostUsedTags = await _postTagCountService.GetMostUsedTags(5);
+                recommendedUsers = await _recommendations.GeneratePeopleRecommendations(UserInfo);
             }
-
-            Posts = await _postRecommendations.GeneratePostRecommendations(UserInfo);
-
-            mostUsedTags = await _postTagCountService.GetMostUsedTags(5);
+            else
+            {
+                RedirectToPage("RegisterUser");
+            }
         }
 
 

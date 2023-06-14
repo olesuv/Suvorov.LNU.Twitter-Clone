@@ -1,18 +1,27 @@
 ﻿using Suvorov.LNU.TwitterClone.Database.Services;
 using Suvorov.LNU.TwitterClone.Models.Database;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace Suvorov.LNU.TwitterClone.Database
 {
-    public class PostRecommendations : IPostRecommendations
+    public class PostRecommendations : IRecommendations
     {
         private readonly PostService _postService;
 
         private readonly FolloweeService _followeeService;
 
-        public PostRecommendations(PostService postService, FolloweeService followeeService)
+        private readonly FollowService _followService;
+
+        private readonly UserService _userService;
+
+        public PostRecommendations(PostService postService, FolloweeService followeeService, UserService userService,
+            FollowService followService)
         {
             _postService = postService;
             _followeeService = followeeService;
+            _followService = followService;
+            _userService = userService;
         }
 
         public async Task<List<Post>> GeneratePostRecommendations(User currentUser)
@@ -22,8 +31,8 @@ namespace Suvorov.LNU.TwitterClone.Database
             List<Post> allLatest72hFolloweesPosts = new List<Post>();
             List<Post> userRecommendations = new List<Post>();
 
-            // If new user
-            if (await _followeeService.GetAllFollowees(currentUser) == null)
+            // If new user or 0 followee's
+            if (allFollowingUsers.Count == 0)
             {
                 foreach (var mostLiked in allLatest72hMostLiked)
                 {
@@ -64,6 +73,37 @@ namespace Suvorov.LNU.TwitterClone.Database
             }
 
             return userRecommendations;
+        }
+
+        public async Task<List<User>> GeneratePeopleRecommendations(User currentUser)
+        {
+            List<User> recommendatedUsers = new List<User>();
+            List<User> currentUserFollowees = await _followeeService.GetAllFollowees(currentUser);
+
+            if (currentUserFollowees.Count == 0)
+            {
+                recommendatedUsers = await _followService.GetUsersWithMostFollowers(5);
+            }
+            else
+            {
+                foreach (var user in currentUserFollowees)
+                {
+                    List<User> followeeFollowes = await _followeeService.GetAllFollowees(user);
+
+                    foreach (var recommendedUser in followeeFollowes)
+                    {
+                        if (!await _followeeService.CheckIfFollowerExists(recommendedUser, currentUser))
+                        {
+                            if (!recommendatedUsers.Contains(recommendedUser))
+                            {
+                                recommendatedUsers.Add(recommendedUser);
+                            }
+                        }
+                    }
+                }
+            }
+
+            return recommendatedUsers;
         }
     }
 }

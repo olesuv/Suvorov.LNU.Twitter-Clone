@@ -1,27 +1,28 @@
 ﻿@page
 @model Suvorov.LNU.TwitterClone.Web.Pages.AboutModel
 @{
-    ViewData["Title"] = "Users";
+    ViewData["Title"] = "About";
 }
 
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-6">
-            <h2 class="text-center"><b>About Me</b></h2>
-            <hr />
-
-            <p>First Name: Oleh</p>
-            <p>Last Name: Suvorov</p>
-            <p>Project: Twitter Clone</p>
-            <p>
-                Telegram:
-                <a href="https://t.me/suph0mi3">@@suph0mi3</a>
-            </p>
-            <p>Email: olegsuv.ukr@gmail.com</p>
-            <p>
-                Git Repository:
-                <a href="https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone">@@my_repo</a>
-            </p>
+            <div class="jumbotron">
+                <h1 class="TrendsLabelTitle">About</h1>
+                <p class="lead">
+                    <div class="alert alert-danger" role="alert">
+                        Disclaimer! <a href="#" class="alert-link">This project</a> was built only in education interest.
+                    </div>
+                </p>
+                <hr class="my-4">
+                <p>Open-sourced Twitter clone project with .NET stack, Swagger, OpenAI integration, CRUD operations and simple algorithms recommendations.</p>
+                <p class="lead" style="text-align: center;">
+                    <a href="https://github.com/plxgwalker/Suvorov.LNU.Twitter-Clone"><img src="~/github.png" class="logo-img"></a>
+                    <a href="mailto:olegsuv.dev@gmail.com"><img src="~/email.png" class="logo-img"></a>
+                    <a href="https://t.me/suph0mi3"><img src="~/telegram.png" class="logo-img"></a>
+                </p>
+                <p style="text-align: center;">by <a href="https://github.com/plxgwalker/">Oleh Suvorov</a></p>
+            </div>
         </div>
     </div>
 </div>

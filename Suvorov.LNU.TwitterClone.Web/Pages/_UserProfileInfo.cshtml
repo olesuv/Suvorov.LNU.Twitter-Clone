@@ -17,6 +17,14 @@
                             <input type="hidden" name="userId" value="@Model.ProfileUser.Id" />
                             <button class="btn rounded-pill PostButton EditProfile" type="submit">Edit profile</button>
                         </form>
+                        //@if (ViewData["Message"] != null)
+                        //{
+                        //    <script type="text/javascript">
+                        //        window.onload = function () {
+                        //            alert("@ViewData["Message"]");
+                        //        };
+                        //    </script>
+                        //}
                     }
                     else if (await followService.CheckIfFollowerExists(Model.ProfileUser, Model.VisitorUser))
                     {

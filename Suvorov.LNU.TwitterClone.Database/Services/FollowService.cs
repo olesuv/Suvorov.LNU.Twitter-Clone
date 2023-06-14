@@ -81,5 +81,16 @@ namespace Suvorov.LNU.TwitterClone.Database.Services
             int followersAmount = follow?.FollowersAmount ?? 0;
             return followersAmount;
         }
+
+        public async Task<List<User>> GetUsersWithMostFollowers(int count)
+        {
+            List<User> usersWithMostFollowers = await _dbContext.Follow
+                .OrderByDescending(f => f.FollowersAmount)
+                .Select(f => f.CuurentUser)
+                .Take(count)
+                .ToListAsync();
+
+            return usersWithMostFollowers;
+        }
     }
 }

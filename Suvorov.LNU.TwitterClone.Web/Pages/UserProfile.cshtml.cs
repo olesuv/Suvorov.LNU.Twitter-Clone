@@ -24,13 +24,13 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         public List<(string Name, int Count)> mostUsedTags { get; set; }
 
-
         private readonly Database.Services.UserService _userService;
 
         private readonly PostService _postService;
 
-
         private readonly PostTagCountService _postTagCountService;
+
+        public List<User> recommendedUsers { get; set; }
 
         private readonly LikeService _likeService;
 
@@ -38,9 +38,11 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
         private readonly FolloweeService _followeeService;
 
+        private readonly IRecommendations _recommendations;
+
         public UserProfileModel(Database.Services.UserService userService, PostService postService, 
             PostTagCountService postTagCountService, LikeService likeService, FollowService followService,
-            FolloweeService followeeService)
+            FolloweeService followeeService, IRecommendations recommendations)
         {
             _userService = userService;
             _postService = postService;
@@ -48,6 +50,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             _likeService = likeService;
             _followService = followService;
             _followeeService = followeeService;
+            _recommendations = recommendations;
         }
 
         public async Task<IActionResult> OnGetAsync(int userId)
@@ -64,11 +67,14 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             if (!string.IsNullOrEmpty(visitorUserEmail))
             {
                 VisitorUser = await _userService.GetByEmail(visitorUserEmail);
+                ProfileUserPosts = await _postService.SortUserPostsByPostDate(ProfileUser);
+                mostUsedTags = await _postTagCountService.GetMostUsedTags(5);
+                recommendedUsers = await _recommendations.GeneratePeopleRecommendations(VisitorUser);
             }
-
-            ProfileUserPosts = await _postService.SortUserPostsByPostDate(ProfileUser);
-
-            mostUsedTags = await _postTagCountService.GetMostUsedTags(10);
+            else
+            {
+                RedirectToPage("LoginUser");
+            }
 
             return Page();
         }
@@ -98,7 +104,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
 
             await _postService.Update(currentPost);
 
-            return new RedirectToPageResult("/Home");
+            return new RedirectToPageResult("/UserProfile", new { ProfileUser.Id });
         }
 
         public async Task<IActionResult> OnPostUserUnLikePostAsync(int currentPostId)
@@ -121,7 +127,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 await _postService.Update(currentPost);
             }
 
-            return new RedirectToPageResult("/Home");
+            return new RedirectToPageResult("/UserProfile", new { ProfileUser.Id });
         }
 
         public async Task<IActionResult> OnPostFollowUserAsync(int userId)
@@ -131,7 +137,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             await _followService.Follow(ProfileUser, VisitorUser);
             await _followeeService.Followee(VisitorUser, ProfileUser);
 
-            return new RedirectToPageResult("/Home");
+            return new RedirectToPageResult("/UserProfile", new { ProfileUser.Id });
         }
 
         public async Task<IActionResult> OnPostUnFollowUserAsync(int userId)
@@ -141,7 +147,19 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
             await _followService.Unfollow(ProfileUser, VisitorUser);
             await _followeeService.Unfollowee(VisitorUser, ProfileUser);
 
-            return new RedirectToPageResult("/Home");
+            return new RedirectToPageResult("/UserProfile", new { ProfileUser.Id });
+        }
+
+        //public async void OnPostEditProifle(int userId)
+        //{
+        //    await OnGetAsync(userId);
+
+        //    ViewData["Message"] = string.Format("Comming soon, {1}...", VisitorUser.Name);
+        //}
+
+        public Task<IActionResult> OnPostRedirectToHomeAsync()
+        {
+            return Task.FromResult<IActionResult>(new RedirectToPageResult("/Home"));
         }
     }
 }
