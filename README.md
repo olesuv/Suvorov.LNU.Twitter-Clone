@@ -99,7 +99,7 @@ dotnet run
 4. **Home Page**
 	- [x] List of following people's posts.
 	- [x] List of recomendation posts.
-	- [ ] List of recomendation people.
+	- [x] List of recomendation people.
 	- [x] List of popular hashtags.
 	- [ ] Searchbar.
 	
@@ -119,22 +119,14 @@ dotnet run
 	
 7. **Features and algorithms**
 	- [x] Posts recomendations. Recomendations of posts with hashtag which you like and which posts likes people which liked similar to your post.
-	- [ ] Friends recomendations. When someone follows your friend, probably you may know this 'someone'. 
+	- [x] Friends recomendations. When someone follows your friend, probably you may know this 'someone'. 
 	- [ ] Search of users, posts.
 
 8. **Integration with OpenAI**
 	- [x] Post generation.
 	- [x] Hashtags generation.
 
-
-## :iphone: Contact me
-
-:email: [Email](mailto:olegsuv.ukr@gmail.com)
-
-:calling: [Telegram](https://t.me/suph0mi3)
-
- ## Lab 3
-**Task/s:**
+## Lab 3
 - Change `Home` page. Changed home page apperreance.
 - Change `Post button`. Redesigned post button.
 - Change `Post area`. Made borders for post apperreance.
@@ -151,3 +143,7 @@ My project [Edelveis](https://github.com/odvova/Edelveis).
 - Reviewer: Kozariz Volodymyr
 - My project [Edelveis](https://github.com/odvova/Edelveis).
 - [Pull request](https://github.com/odvova/Suvorov.LNU.Twitter-Clone/pull/1)
+
+## :iphone: Contact me
+:email: [Email](mailto:olegsuv.dev@gmail.com)
+:calling: [Telegram](https://t.me/suph0mi3)
