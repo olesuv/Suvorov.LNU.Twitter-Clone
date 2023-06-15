@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OpenAI_API.Moderation;
 using Suvorov.LNU.TwitterClone.Database.Interfaces;
 using Suvorov.LNU.TwitterClone.Database.Services;
 using Suvorov.LNU.TwitterClone.Models.Database;
@@ -39,7 +42,16 @@ namespace Suvorov.LNU.TwitterClone.API.Controllers
                     return NotFound();
                 }
 
-                return Ok(_mapper.Map<User>(user));
+                var result = _mapper.Map<User>(user);
+
+                var options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    MaxDepth = 32
+                };
+
+                var serializedPost = JsonSerializer.Serialize(result, options);
+                return Content(serializedPost, "application/json");
             }
             catch (Exception ex)
             {
@@ -50,9 +62,18 @@ namespace Suvorov.LNU.TwitterClone.API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<ActionResult<User>> GetAll()
         {
-            return await _userService.GetAll().ToListAsync();
+            var result = await _userService.GetAll().ToListAsync();
+
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                MaxDepth = 32
+            };
+
+            var serializedPost = JsonSerializer.Serialize(result, options);
+            return Content(serializedPost, "application/json");
         }
 
         [HttpPost]
@@ -69,9 +90,16 @@ namespace Suvorov.LNU.TwitterClone.API.Controllers
                 return BadRequest("Email already exists.");
             }
 
-            var user = _mapper.Map<User>(createUserRequest);
-            var createdUser = await _userService.Create(user);
-            return createdUser;
+            var result = _mapper.Map<User>(createUserRequest);
+
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+                MaxDepth = 32
+            };
+
+            var serializedPost = JsonSerializer.Serialize(result, options);
+            return Content(serializedPost, "application/json");
         }
 
 
