@@ -74,6 +74,14 @@ Than after installation of [.NET](https://dotnet.microsoft.com/) and all configu
 dotnet run
 ```
 
+## :paintbrush: Project Diagrams
+
+<div>
+  <img src="./Suvorov.LNU.TwitterClone.Web/wwwroot/diagrams/twitter-clone-infrastructure.png" alt="Project Infrastructure" width="49%" />
+  <img src="./Suvorov.LNU.TwitterClone.Web/wwwroot/diagrams/twitter-clone-architecture.png" alt="Project Architecture" width="49%" />
+</div>
+
+
 ## :pencil: Decomposition of tasks
 
 1. **Azure deployment**
@@ -125,6 +133,10 @@ dotnet run
 8. **Integration with OpenAI**
 	- [x] Post generation.
 	- [x] Hashtags generation.
+ 
+9. **API**
+    - [x] Swagger UI.
+    - [x] Postman.
 
 ## Lab 3
 - Change `Home` page. Changed home page apperreance.
