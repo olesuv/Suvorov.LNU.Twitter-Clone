@@ -119,7 +119,7 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 await _postTagCountService.IncrementTagCount(newPostTag);
             }
 
-            return new RedirectToPageResult("/Home");
+            return Redirect($"/UserProfile/{user.Id}");
         }
 
         public async Task<IActionResult> OnPostUserTweetUisngOpenAIAsync()
@@ -130,47 +130,12 @@ namespace Suvorov.LNU.TwitterClone.Web.Pages
                 return Page();
             }
 
-            var userEmail = HttpContext.Session.GetString("userEmailAddress");
-            var user = await _userService.GetByEmail(userEmail);
-
             var tweetsGenerator = new TweetsGenerator(OpenAI_API_KEY);
             var userPrompt = Post.TextContent;
 
-            var newPost = new Post()
-            {
-                TextContent = await tweetsGenerator.GenerateTweetText(userPrompt),
-                PostDate = DateTime.Now,
-                LikesAmount = 0,
-                User = user
-            };
+            var generatedTweet = await tweetsGenerator.GenerateTweetText(userPrompt);
 
-            await _postService.Create(newPost);
-
-
-            var newPostAITag = new PostTag()
-            {
-                Name = "generatedWithAI",
-                Post = newPost
-            };
-
-            await _postTagService.Create(newPostAITag);
-            await _postTagCountService.IncrementTagCount(newPostAITag);
-
-            List<string> generatedHashtags = await tweetsGenerator.GenerateTweetHashtags(newPost.TextContent);
-
-            foreach (var hashtag in generatedHashtags)
-            {
-                var newPostTag = new PostTag()
-                {
-                    Name = hashtag,
-                    Post = newPost
-                };
-
-                await _postTagService.Create(newPostTag);
-                await _postTagCountService.IncrementTagCount(newPostTag);
-            }
-
-            return new RedirectToPageResult("/Home");
+            return RedirectToPage("/PostAI", new { AIGenerated = generatedTweet });
         }
 
         public async Task<IActionResult> OnPostUserLikePostAsync(int currentPostId)

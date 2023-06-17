@@ -1,24 +1,21 @@
 ﻿@model HomeModel
 
 <div class="row">
-    <div class="col-md-6 col-sm-12">
-        <form method="post" asp-page-handler="UserTweet">
+    <div class="col-md-12 col-sm-12">
+        <form method="post">
             <div class="form-group row">
-                <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening?"></textarea>
+                <textarea asp-for="Post.TextContent" class="form-control PostTextArea" rows="5" placeholder="What's happening?"></textarea>
                 <span asp-validation-for="Post.TextContent" class="error"></span>
             </div>
 
-            <input type="submit" class="btn rounded-pill PostButtonInsidePost" value="Tweet" />
-        </form>
-    </div>
-    <div class="col-md-6 col-sm-12">
-        <form method="post" asp-page-handler="UserTweetUisngOpenAI">
-            <div class="form-group row">
-                <textarea asp-for="Post.TextContent" class="form-control PostTextArea" id="postTextContent" rows="3" placeholder="What's happening? Try AI, just write tweet idea"></textarea>
-                <span asp-validation-for="Post.TextContent" class="error"></span>
+            <div class="row" style="text-align: center;">
+                <div class="col-sm-12 col-md-6">
+                    <button type="submit" asp-page-handler="UserTweet" class="btn rounded-pill PostButtonInsidePost">Tweet</button>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <button type="submit" asp-page-handler="UserTweetUisngOpenAI" class="btn rounded-pill PostButtonInsidePost">Tweet with AI &#x2728;</button>
+                </div>
             </div>
-
-            <input type="submit" class="btn rounded-pill PostButtonInsidePost" value="Tweet with AI &#x2728;" />
         </form>
     </div>
 </div>

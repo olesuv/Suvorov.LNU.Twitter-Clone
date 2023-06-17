@@ -1,0 +1,36 @@
+﻿@page "PostAI"
+@using Microsoft.AspNetCore.Http
+@model PostAIModel
+
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Post with AI";
+    var AIGenerated = Request.Query["AIGenerated"];
+}
+
+@if (HttpContextAccessor?.HttpContext?.Session.GetString("userEmailAddress") == null)
+{
+    RedirectToPage("RegisterUser");
+}
+else
+{
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="col-sm-12 col-md-4">
+            <h1 class="TrendsLabelTitle">Tweet with AI</h1>
+            <div class="alert alert-info" role="alert">
+                <p>OpenAI generated post, copy and paste for editing text below</p>
+                <p>P.S. After tweeting tags will be added automatically <span>&#x1F92B;</span></p>
+            </div>
+            <p>@AIGenerated</p>
+
+            <form method="post" asp-page-handler="UserTweetUisngOpenAI">
+                <div class="form-group row">
+                    <textarea asp-for="Post.TextContent" class="form-control PostTextAreaAI" rows="5" id="postTextContent"></textarea>
+                    <span asp-validation-for="Post.TextContent" class="error"></span>
+                </div>
+
+                <input type="submit" class="btn rounded-pill PostButtonInsidePost" value="Tweet" />
+            </form>
+        </div>
+    </div>
+}
